@@ -208,6 +208,7 @@ class Level:
         
         self.door.update(self.level_clear)
         self.door.draw(self.screen)
+        
         if (self.level_clear):
             if (self.boss_room):
                 self.boss_info.active = False
