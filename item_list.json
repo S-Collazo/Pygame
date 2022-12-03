@@ -1,0 +1,25 @@
+{
+    "Currency": {
+        "Basic Gem": {
+            "name": "Basic Gem",
+            "asset_folder": [
+                "\\images\\coin\\gem_moonstone\\gem_moonstone",
+                "\\images\\tileset\\creepy_forest\\Objects\\gem_ore"
+            ],
+            "asset_dimensions": "100,200",
+            "currency_value": [
+                100,
+                200
+            ]
+        }
+    },
+    "Healing Item": {
+        "Basic Health Potion": {
+            "name": "Basic Health Potion",
+            "asset_folder": "\\images\\chemistry\\essence_of_rookswort\\essence_of_rookswort",
+            "asset_dimensions": "100,100",
+            "healing_power": 20
+        }
+    },
+    "Upgrades": {}
+}

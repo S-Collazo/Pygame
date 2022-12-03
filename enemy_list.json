@@ -1,0 +1,240 @@
+{
+    "Goblins": {
+        "Goblin Standard": {
+            "name": "Goblin Standard",
+            "asset_folder": "\\enemies\\goblin\\goblin_standard",
+            "hitpoints": 50,
+            "attack_power": 10,
+            "speed_walk_modifier": 100,
+            "jump_height_modifier": 10,
+            "interval_jump": 0,
+            "interval_attack": 30,
+            "interval_block": 0,
+            "interval_shoot": 0,
+            "bullet": {
+                "name": "Skull",
+                "path": "\\images\\elements\\skull\\skull",
+                "quantity": 1,
+                "attack_power": 20
+            },
+            "animations": {
+                "Attack": {
+                    "path": "\\_ATTACK\\_ATTACK_",
+                    "quantity": 3
+                },
+                "Block": {
+                    "path": "\\_BLOCK\\_BLOCK_",
+                    "quantity": 1
+                },
+                "Die": {
+                    "path": "\\_DIE\\_DIE_",
+                    "quantity": 5
+                },
+                "Hurt": {
+                    "path": "\\_HURT\\_HURT_",
+                    "quantity": 2
+                },
+                "Idle": {
+                    "path": "\\_IDLE\\_IDLE_",
+                    "quantity": 2
+                },
+                "Jump": {
+                    "path": "\\_JUMP\\_JUMP_",
+                    "quantity": 5
+                },
+                "Run": {
+                    "path": "\\_RUN\\_RUN_",
+                    "quantity": 3
+                },
+                "Throw": {
+                    "path": "\\_THROW\\_THROW_",
+                    "quantity": 1
+                },
+                "Walk": {
+                    "path": "\\_WALK\\_WALK_",
+                    "quantity": 2
+                }
+            }
+        },
+        "Goblin Grunt": {
+            "name": "Goblin Grunt",
+            "asset_folder": "\\enemies\\goblin\\goblin_grunt",
+            "hitpoints": 70,
+            "attack_power": 10,
+            "speed_walk_modifier": 150,
+            "jump_height_modifier": 10,
+            "interval_jump": 0,
+            "interval_attack": 30,
+            "interval_block": 60,
+            "interval_shoot": 0,
+            "bullet": {
+                "name": "Skull",
+                "path": "\\images\\elements\\skull\\skull",
+                "quantity": 1,
+                "attack_power": 20
+            },
+            "animations": {
+                "Attack": {
+                    "path": "\\_ATTACK\\_ATTACK_",
+                    "quantity": 3
+                },
+                "Block": {
+                    "path": "\\_BLOCK\\_BLOCK_",
+                    "quantity": 3
+                },
+                "Die": {
+                    "path": "\\_DIE\\_DIE_",
+                    "quantity": 5
+                },
+                "Hurt": {
+                    "path": "\\_HURT\\_HURT_",
+                    "quantity": 2
+                },
+                "Idle": {
+                    "path": "\\_IDLE\\_IDLE_",
+                    "quantity": 2
+                },
+                "Jump": {
+                    "path": "\\_JUMP\\_JUMP_",
+                    "quantity": 2
+                },
+                "Run": {
+                    "path": "\\_RUN\\_RUN_",
+                    "quantity": 2
+                },
+                "Throw": {
+                    "path": "\\_THROW\\_THROW_",
+                    "quantity": 1
+                },
+                "Walk": {
+                    "path": "\\_WALK\\_WALK_",
+                    "quantity": 2
+                }
+            }
+        },
+        "Goblin Shaman": {
+            "name": "Goblin Shaman",
+            "asset_folder": "\\enemies\\goblin\\goblin_shaman",
+            "hitpoints": 30,
+            "attack_power": 30,
+            "speed_walk_modifier": 200,
+            "jump_height_modifier": 10,
+            "interval_jump": 0,
+            "interval_attack": 0,
+            "interval_block": 0,
+            "interval_shoot": 40,
+            "bullet": {
+                "name": "Skull",
+                "path": "\\images\\elements\\skull\\skull",
+                "quantity": 1,
+                "attack_power": 30
+            },
+            "animations": {
+                "Attack": {
+                    "path": "\\_ATTACK\\_ATTACK_",
+                    "quantity": 3
+                },
+                "Block": {
+                    "path": "\\_BLOCK\\_BLOCK_",
+                    "quantity": 1
+                },
+                "Die": {
+                    "path": "\\_DIE\\_DIE_",
+                    "quantity": 5
+                },
+                "Hurt": {
+                    "path": "\\_HURT\\_HURT_",
+                    "quantity": 2
+                },
+                "Idle": {
+                    "path": "\\_IDLE\\_IDLE_",
+                    "quantity": 2
+                },
+                "Jump": {
+                    "path": "\\_JUMP\\_JUMP_",
+                    "quantity": 2
+                },
+                "Run": {
+                    "path": "\\_RUN\\_RUN_",
+                    "quantity": 2
+                },
+                "Throw": {
+                    "path": "\\_THROW\\_THROW_",
+                    "quantity": 2
+                },
+                "Walk": {
+                    "path": "\\_WALK\\_WALK_",
+                    "quantity": 2
+                }
+            }
+        }
+    },
+    "Bosses": {
+        "Goblin King": {
+            "name": "Goblin King",
+            "asset_folder": "\\enemies\\bosses\\Goblin_King",
+            "hitpoints": 400,
+            "attack_power": 40,
+            "attack_special_value":[
+                1,
+                2,
+                3
+            ],
+            "speed_walk_modifier": 200,
+            "jump_height_modifier": 10,
+            "interval_jump": 10,
+            "interval_attack": 20,
+            "interval_attack_special": 300,
+            "interval_block": 30,
+            "interval_shoot": 100,
+            "bullet": {
+                "name": "Goblin Club",
+                "path": "\\images\\elements\\goblin_club\\goblin_club",
+                "quantity": 2,
+                "attack_power": 40
+            },
+            "animations": {
+                "Attack": {
+                    "path": "\\_ATTACK\\_ATTACK_",
+                    "quantity": 10
+                },
+                "Block": {
+                    "path": "\\_BLOCK\\_BLOCK_",
+                    "quantity": 4
+                },
+                "Die": {
+                    "path": "\\_DIE\\_DIE_",
+                    "quantity": 7
+                },
+                "Hurt": {
+                    "path": "\\_HURT\\_HURT_",
+                    "quantity": 4
+                },
+                "Idle": {
+                    "path": "\\_IDLE\\_IDLE_",
+                    "quantity": 4
+                },
+                "Jump": {
+                    "path": "\\_JUMP\\_JUMP_",
+                    "quantity": 8
+                },
+                "Run": {
+                    "path": "\\_RUN\\_RUN_",
+                    "quantity": 11
+                },
+                "Throw": {
+                    "path": "\\_THROW\\_THROW_",
+                    "quantity": 7
+                },
+                "Walk": {
+                    "path": "\\_WALK\\_WALK_",
+                    "quantity": 7
+                },
+                "Special Attack": {
+                    "path": "\\_ATTACK_SPECIAL\\_ATTACK_SPECIAL_",
+                    "quantity": 4
+                }
+            }
+        }
+    }
+}
