@@ -15,10 +15,11 @@ from loot import *
 from door import Door
 from damage_control import *
 from ui_screen_info import *
+from sounds import Sound
 from auxiliar import Auxiliar
 
 class Level:
-    def __init__(self,screen,level,difficulty):
+    def __init__(self,screen,level,difficulty):        
         self.screen = screen
         self.level_number = level
         self.difficulty = difficulty
@@ -29,6 +30,8 @@ class Level:
         lv_gravity = level_info["gravity"]
         lv_frame_rate_ms = level_info["frame_rate_ms"]
         lv_move_rate_ms = level_info["move_rate_ms"]
+        
+        lv_soundtrack = level_info["soundtrack"]
 
         player_info = level_info["player"]
         enemy_info = level_info["enemy"]
@@ -127,8 +130,10 @@ class Level:
         self.time_final = [0,0]
         
         self.level_clear = False
-                 
-    def run_level (self,delta_ms,lista_eventos,keys):                
+        
+        Sound.soundtrack(lv_soundtrack)
+                         
+    def run_level (self,delta_ms,lista_eventos,keys):                        
         self.game_state = GAME_RUNNING
         self.screen_info.active = True
         if(self.boss_room):
@@ -180,8 +185,8 @@ class Level:
 
         for enemy in self.lista_enemigos:
             if not (enemy.is_alive):
-                    enemy.drop_loot(self.lista_items,self.item_list)
                     self.lista_enemigos.remove(enemy)
+                    enemy.drop_loot(self.lista_items,self.item_list)
                     if (self.boss_room and enemy.asset_name == self.boss_name):
                         self.lista_enemigos.clear()
                     break

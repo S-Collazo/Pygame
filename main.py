@@ -9,6 +9,7 @@ from pygame.locals import *
 from constants import *
 from loot import *
 from damage_control import *
+from sounds import Sound
 
 flags = DOUBLEBUF
 
@@ -35,6 +36,8 @@ while True:
             delta_ms = clock.tick(FPS)
                 
             game_state = start.start_menu(delta_ms,lista_eventos,keys)
+            
+            pygame.mixer.stop()
             
             level_number_value = start.level_number_value
             level_number = "Nivel {0}".format(level_number_value)

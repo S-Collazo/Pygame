@@ -74,7 +74,7 @@ class Entity:
             
         self.direction = direction_inicial
                         
-        self.rect_collition = pygame.Rect(x+self.rect.width / 4,y,self.rect.width / 3,self.rect.height)
+        self.rect_collition = pygame.Rect(x+self.rect.width / 4,y,self.rect.width / 2,self.rect.height)
         self.rect_ground_collition = pygame.Rect(self.rect_collition)
         self.rect_ground_collition.height = GROUND_COLLIDE_H
         self.rect_ground_collition.y = y + self.rect.height - GROUND_COLLIDE_H
@@ -163,7 +163,6 @@ class Entity:
             
     def death (self):
         if(self.animation != self.death_r and self.animation != self.death_l):
-            self.frame = 0
             if (self.direction == DIRECTION_R):
                 self.animation = self.death_r
             else:
@@ -230,13 +229,13 @@ class Entity:
             if(self.frame < len(self.animation) - 1):
                 self.frame += 1
             else:
-                self.frame = 0
                 if (self.is_dying):
                     self.is_dying = False
                     self.is_alive = False
-                    print("----------")
-                if (self.is_hurt):
-                    self.is_hurt = False
+                else:
+                    self.frame = 0
+                    if (self.is_hurt):
+                        self.is_hurt = False
                                                       
     def update(self,delta_ms,lista_plataformas):
             self.do_animation(delta_ms)

@@ -1,4 +1,5 @@
 import pygame
+from constants import *
 
 class Damage_Control:
     def __init__(self, lista_personajes, lista_enemigos, lista_balas, lista_trampas):
@@ -14,6 +15,9 @@ class Damage_Control:
                     if not (atacado.is_block or atacado.is_dying or atacado.is_hurt) and (atacante.is_attack or atacante.is_shoot) and not (atacado.asset_name == atacante.asset_name):
                         if((atacante.rect_body_collition.colliderect(atacado.rect_collition))):
                             atacado.hitpoints -= atacante.attack_power
+                            
+                            if(DEBUG):
+                                print("{0} hit {1}".format(atacante.asset_name,atacado.asset_name))
                             
                             if(atacante.rect.x <= atacado.rect.x):
                                 atacado.add_x(25)

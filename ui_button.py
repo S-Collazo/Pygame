@@ -23,7 +23,6 @@ class Button(Widget):
             self.slave_surface.fill(M_BRIGHT_CLICK, special_flags=pygame.BLEND_RGB_SUB) 
                          
     def update (self,lista_eventos):
-        self.slave_rect_collide.x = self.x
         mousePos = pygame.mouse.get_pos()
         self.state = M_STATE_NORMAL
         if self.slave_rect_collide.collidepoint(mousePos):

@@ -9,7 +9,8 @@ class Goblin_Standard (Enemy):
 
     def update(self, delta_ms, lista_plataformas, lista_oponente, lista_balas, lista_items,item_asset):
         super().update(delta_ms, lista_plataformas, lista_items,item_asset)
-        self.events(delta_ms, lista_oponente,lista_items,item_asset)
+        if(self.is_alive):
+            self.events(delta_ms, lista_oponente,lista_items,item_asset)
 
     def draw(self, screen):
         super().draw(screen)
@@ -59,7 +60,8 @@ class Goblin_Grunt (Enemy):
         
     def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas,lista_items,item_asset):
         super().update(delta_ms,lista_plataformas,lista_items,item_asset)
-        self.events(delta_ms,lista_oponente,lista_balas)
+        if(self.is_alive):
+            self.events(delta_ms,lista_oponente,lista_balas)
         
     def draw (self,screen):
         super().draw(screen)
@@ -120,7 +122,8 @@ class Goblin_Shaman (Enemy):
         
     def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas,lista_items,item_asset):
         super().update(delta_ms,lista_plataformas,lista_items,item_asset)
-        self.events(delta_ms,lista_oponente,lista_balas)
+        if(self.is_alive):
+            self.events(delta_ms,lista_oponente,lista_balas)
         
     def draw (self,screen):
         super().draw(screen)

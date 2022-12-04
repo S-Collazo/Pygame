@@ -4,6 +4,7 @@ from pygame.locals import *
 from constants import *
 from ui_pause_main import PauseMain
 from ui_pause_options import PauseOptions
+from sounds import Sound
 
 class Pause:
     def __init__ (self,screen):
@@ -16,12 +17,15 @@ class Pause:
     def pause_level (self,delta_ms,lista_eventos):
         self.game_state = GAME_PAUSE
         
+        Sound.music_pause()
+        
         for event in lista_eventos:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
+                    Sound.music_pause(False)
                     self.game_state = GAME_RUNNING
                     return self.game_state
                                     
@@ -35,9 +39,8 @@ class Pause:
         else:
             if (self.exit):
                 self.game_state = GAME_MENU
-                #return self.game_state
             else:
+                Sound.music_pause(False)
                 self.game_state = GAME_RUNNING
-                #return self.game_state
                     
         return self.game_state

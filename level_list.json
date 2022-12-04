@@ -1,8 +1,9 @@
 {
     "Nivel 1": {
         "background_image": "\\images\\locations\\set_bg_06\\creepy_forest_000.png",
+        "soundtrack": "\\sounds\\soundtrack\\ost_001.mp3",
         "gravity": 10,
-        "frame_rate_ms": 100,
+        "frame_rate_ms": 2000,
         "move_rate_ms": 40,
         "boss_room": 0,
         "player": {
@@ -190,6 +191,7 @@
     
     "Nivel 2": {
         "background_image": "\\images\\locations\\set_bg_06\\creepy_forest_001.png",
+        "soundtrack": "\\sounds\\soundtrack\\ost_002.mp3",
         "gravity": 10,
         "frame_rate_ms": 100,
         "move_rate_ms": 40,
@@ -322,6 +324,7 @@
 
     "Nivel 3": {
         "background_image": "\\images\\locations\\set_bg_06\\castle_bridge.png",
+        "soundtrack": "\\sounds\\soundtrack\\ost_003.mp3",
         "gravity": 10,
         "frame_rate_ms": 100,
         "move_rate_ms": 40,
@@ -371,7 +374,7 @@
             "boss_list": "enemy_list.json",
             "boss_name": "Goblin King",
             "p_scale": 0.3,
-            "boss_starter_position": "800,350"
+            "boss_starter_position": "700,350"
         },
         "platform": {
             "platform_folder": "\\images\\tileset\\castle_bridge\\Tiles\\",

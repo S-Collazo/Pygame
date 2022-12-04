@@ -60,12 +60,13 @@ class LevelSelector(Form):
         self.set_active(parametro)
         
     def move_buttons (self,new_x):
+        if(len(self.lista_widget) > 4):
+            self.lista_widget.remove(self.lvl_easy)
+            self.lista_widget.remove(self.lvl_normal)
+            self.lista_widget.remove(self.lvl_hard)
         self.lvl_easy.x = new_x
-        self.lvl_easy.slave_rect_collide.x = new_x
         self.lvl_normal.x = new_x + 50
-        self.lvl_normal.slave_rect_collide.x = new_x + 50
         self.lvl_hard.x = new_x + 100
-        self.lvl_hard.slave_rect_collide.x = new_x + 100
         self.lista_widget.append(self.lvl_easy)
         self.lista_widget.append(self.lvl_normal)
         self.lista_widget.append(self.lvl_hard)
