@@ -2,6 +2,7 @@ import pygame
 from constants import *
 from enemy import Enemy
 from ammo import Ammo
+from sounds import Sound
 from auxiliar import Auxiliar
 
 class Boss(Enemy):
@@ -18,6 +19,8 @@ class Boss(Enemy):
         self.attack_special_r = Auxiliar.getSurfaceFromJson(self.asset,"Special Attack",flip=False,p_scale=self.p_scale)
         self.attack_special_l = Auxiliar.getSurfaceFromJson(self.asset,"Special Attack",flip=True,p_scale=self.p_scale)
         self.attack_special_value = self.asset["attack_special_value"][self.difficulty]
+        
+        self.attack_special_sound = Auxiliar.getSoundFromJson(self.asset,"Special Attack")
 
     def attack_special (self,lista_enemigos,spawner,on_off=False):
         if(on_off == True and self.is_jump == False and self.is_fall == False):
@@ -28,7 +31,13 @@ class Boss(Enemy):
                 else:
                     self.animation = self.attack_l
                     
+                Sound.sound_effect(self.attack_special_sound)
+                    
                 spawner.boss_spawn(lista_enemigos,self.attack_special_value)
+    
+    def death (self):
+        super().death()
+        
     
     def update(self, delta_ms, lista_plataformas, lista_oponente, lista_balas, lista_items, item_asset, lista_enemigos, spawner):
         super().update(delta_ms, lista_plataformas, lista_items,item_asset)

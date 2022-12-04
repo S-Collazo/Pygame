@@ -170,10 +170,11 @@ class Level:
         for player in self.lista_personajes:
             if not (player.is_alive):
                 self.game_state = GAME_DEATH
-
-            player.events(delta_ms,keys,lista_eventos,self.lista_balas)
-            player.update(delta_ms,self.lista_plataformas)
-            player.draw(self.screen)
+                break
+            else:
+                player.events(delta_ms,keys,lista_eventos,self.lista_balas)
+                player.update(delta_ms,self.lista_plataformas)
+                player.draw(self.screen)
             
         for bala in self.lista_balas:
             if not (bala.is_shoot):
@@ -185,11 +186,11 @@ class Level:
 
         for enemy in self.lista_enemigos:
             if not (enemy.is_alive):
-                    self.lista_enemigos.remove(enemy)
-                    enemy.drop_loot(self.lista_items,self.item_list)
-                    if (self.boss_room and enemy.asset_name == self.boss_name):
-                        self.lista_enemigos.clear()
-                    break
+                self.lista_enemigos.remove(enemy)
+                enemy.drop_loot(self.lista_items,self.item_list)
+                if (self.boss_room and enemy.asset_name == self.boss_name):
+                    self.lista_enemigos.clear()
+                break
             else:
                 if (self.boss_room and enemy.asset_name == self.boss_name):
                     enemy.update(delta_ms,self.lista_plataformas,self.lista_personajes,self.lista_balas,self.lista_items,self.item_list,self.lista_enemigos,self.spawner)

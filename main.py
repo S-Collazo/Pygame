@@ -54,10 +54,10 @@ while True:
             
         try:
             level = Level(screen,level_number,level_difficulty)
+            win = Win(screen,level.lista_personajes[0],level.time_final,level.has_spawner,level.boss_room)
         except:
             game_state = GAME_END
             
-        win = Win(screen,level.lista_personajes[0],level.time_final,level.has_spawner,level.boss_room)
         highscore = Highscore(screen)
                 
         while not (game_state == GAME_MENU or game_state == GAME_RESTART or game_state == GAME_CONTINUE):

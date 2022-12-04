@@ -7,6 +7,7 @@
                 "\\images\\tileset\\creepy_forest\\Objects\\gem_ore"
             ],
             "asset_dimensions": "100,200",
+            "sound_effect": "\\sounds\\effects\\coin.wav",
             "currency_value": [
                 100,
                 200
@@ -18,6 +19,7 @@
             "name": "Basic Health Potion",
             "asset_folder": "\\images\\chemistry\\essence_of_rookswort\\essence_of_rookswort",
             "asset_dimensions": "100,100",
+            "sound_effect": "\\sounds\\effects\\heal.wav",
             "healing_power": 20
         }
     },

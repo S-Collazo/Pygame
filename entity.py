@@ -2,6 +2,7 @@ import pygame
 from constants import *
 from auxiliar import Auxiliar
 from ammo import Ammo
+from sounds import Sound
 
 class Entity:
     def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=1,interval_time=FPS) -> None:  
@@ -80,7 +81,12 @@ class Entity:
         self.rect_ground_collition.y = y + self.rect.height - GROUND_COLLIDE_H
                 
         self.rect_body_collition = pygame.Rect(x+10,y,self.rect.width/2,self.rect.height)
-            
+        
+        self.attack_sound = Auxiliar.getSoundFromJson(self.asset,"Attack")
+        self.block_sound = Auxiliar.getSoundFromJson(self.asset,"Block")
+        self.death_sound = Auxiliar.getSoundFromJson(self.asset,"Die")
+        self.throw_sound = Auxiliar.getSoundFromJson(self.asset,"Throw")
+                    
     def walk (self,direction_walk):        
         if(self.is_jump == False and self.is_fall == False):
             if (self.direction != direction_walk or (self.animation != self.walk_r and self.animation != self.walk_l)):
@@ -137,7 +143,7 @@ class Entity:
                 if(self.direction == DIRECTION_R):
                     self.animation = self.block_r
                 else:
-                    self.animation = self.block_l    
+                    self.animation = self.block_l
             
     def shoot(self,lista_balas,on_off = True):
         self.is_shoot = on_off
@@ -149,6 +155,8 @@ class Entity:
                     self.animation = self.shoot_r
                 else:
                     self.animation = self.shoot_l
+                    
+                Sound.sound_effect(self.throw_sound)  
                     
             Ammo(asset=self.asset,lista_balas=lista_balas,x=self.rect.x,y=self.rect.y,frame_rate_ms=self.frame_rate_ms,move_rate_ms=self.move_rate_ms,direction=self.direction,p_scale=self.p_scale)
      
@@ -169,6 +177,8 @@ class Entity:
                 self.animation = self.death_l
             self.move_x = 0
             self.move_y = 0
+            
+            Sound.sound_effect(self.death_sound)  
                                                                         
     def is_on_platform(self,lista_plataformas):
         retorno = False

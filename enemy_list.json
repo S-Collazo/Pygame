@@ -15,44 +15,54 @@
                 "name": "Skull",
                 "path": "\\images\\elements\\skull\\skull",
                 "quantity": 1,
-                "attack_power": 20
+                "attack_power": 20,
+                "sound_effect": ""
             },
             "animations": {
                 "Attack": {
                     "path": "\\_ATTACK\\_ATTACK_",
-                    "quantity": 3
+                    "quantity": 3,
+                    "sound_effect": "\\sounds\\effects\\goblin_attack.wav"
                 },
                 "Block": {
                     "path": "\\_BLOCK\\_BLOCK_",
-                    "quantity": 1
+                    "quantity": 1,
+                    "sound_effect": ""
                 },
                 "Die": {
                     "path": "\\_DIE\\_DIE_",
-                    "quantity": 5
+                    "quantity": 5,
+                    "sound_effect": "\\sounds\\effects\\goblin_death.wav"
                 },
                 "Hurt": {
                     "path": "\\_HURT\\_HURT_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 },
                 "Idle": {
                     "path": "\\_IDLE\\_IDLE_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 },
                 "Jump": {
                     "path": "\\_JUMP\\_JUMP_",
-                    "quantity": 5
+                    "quantity": 5,
+                    "sound_effect": ""
                 },
                 "Run": {
                     "path": "\\_RUN\\_RUN_",
-                    "quantity": 3
+                    "quantity": 3,
+                    "sound_effect": ""
                 },
                 "Throw": {
                     "path": "\\_THROW\\_THROW_",
-                    "quantity": 1
+                    "quantity": 1,
+                    "sound_effect": ""
                 },
                 "Walk": {
                     "path": "\\_WALK\\_WALK_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 }
             }
         },
@@ -71,44 +81,54 @@
                 "name": "Skull",
                 "path": "\\images\\elements\\skull\\skull",
                 "quantity": 1,
-                "attack_power": 20
+                "attack_power": 20,
+                "sound_effect": "\\sounds\\effects\\skull_hit.wav"
             },
             "animations": {
                 "Attack": {
                     "path": "\\_ATTACK\\_ATTACK_",
-                    "quantity": 3
+                    "quantity": 3,
+                    "sound_effect": "\\sounds\\effects\\goblin_attack.wav"
                 },
                 "Block": {
                     "path": "\\_BLOCK\\_BLOCK_",
-                    "quantity": 3
+                    "quantity": 3,
+                    "sound_effect": "\\sounds\\effects\\goblin_block.wav"
                 },
                 "Die": {
                     "path": "\\_DIE\\_DIE_",
-                    "quantity": 5
+                    "quantity": 5,
+                    "sound_effect": "\\sounds\\effects\\goblin_death.wav"
                 },
                 "Hurt": {
                     "path": "\\_HURT\\_HURT_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 },
                 "Idle": {
                     "path": "\\_IDLE\\_IDLE_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 },
                 "Jump": {
                     "path": "\\_JUMP\\_JUMP_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 },
                 "Run": {
                     "path": "\\_RUN\\_RUN_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 },
                 "Throw": {
                     "path": "\\_THROW\\_THROW_",
-                    "quantity": 1
+                    "quantity": 1,
+                    "sound_effect": ""
                 },
                 "Walk": {
                     "path": "\\_WALK\\_WALK_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 }
             }
         },
@@ -127,44 +147,54 @@
                 "name": "Skull",
                 "path": "\\images\\elements\\skull\\skull",
                 "quantity": 1,
-                "attack_power": 30
+                "attack_power": 30,
+                "sound_effect": "\\sounds\\effects\\skull_hit.wav"
             },
             "animations": {
                 "Attack": {
                     "path": "\\_ATTACK\\_ATTACK_",
-                    "quantity": 3
+                    "quantity": 3,
+                    "sound_effect": "\\sounds\\effects\\goblin_attack.wav"
                 },
                 "Block": {
                     "path": "\\_BLOCK\\_BLOCK_",
-                    "quantity": 1
+                    "quantity": 1,
+                    "sound_effect": ""
                 },
                 "Die": {
                     "path": "\\_DIE\\_DIE_",
-                    "quantity": 5
+                    "quantity": 5,
+                    "sound_effect": "\\sounds\\effects\\goblin_death.wav"
                 },
                 "Hurt": {
                     "path": "\\_HURT\\_HURT_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 },
                 "Idle": {
                     "path": "\\_IDLE\\_IDLE_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 },
                 "Jump": {
                     "path": "\\_JUMP\\_JUMP_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 },
                 "Run": {
                     "path": "\\_RUN\\_RUN_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 },
                 "Throw": {
                     "path": "\\_THROW\\_THROW_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": "\\sounds\\effects\\skull_throw.wav"
                 },
                 "Walk": {
                     "path": "\\_WALK\\_WALK_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 }
             }
         }
@@ -191,48 +221,59 @@
                 "name": "Goblin Club",
                 "path": "\\images\\elements\\goblin_club\\goblin_club",
                 "quantity": 2,
-                "attack_power": 40
+                "attack_power": 40,
+                "sound_effect": "\\sounds\\effects\\club_hit.wav"
             },
             "animations": {
                 "Attack": {
                     "path": "\\_ATTACK\\_ATTACK_",
-                    "quantity": 10
+                    "quantity": 10,
+                    "sound_effect": "\\sounds\\effects\\goblin_attack.wav"
                 },
                 "Block": {
                     "path": "\\_BLOCK\\_BLOCK_",
-                    "quantity": 4
+                    "quantity": 4,
+                    "sound_effect": "\\sounds\\effects\\goblin_block.wav"
                 },
                 "Die": {
                     "path": "\\_DIE\\_DIE_",
-                    "quantity": 7
+                    "quantity": 7,
+                    "sound_effect": "\\sounds\\effects\\boss_death.wav"
                 },
                 "Hurt": {
                     "path": "\\_HURT\\_HURT_",
-                    "quantity": 4
+                    "quantity": 4,
+                    "sound_effect": ""
                 },
                 "Idle": {
                     "path": "\\_IDLE\\_IDLE_",
-                    "quantity": 4
+                    "quantity": 4,
+                    "sound_effect": ""
                 },
                 "Jump": {
                     "path": "\\_JUMP\\_JUMP_",
-                    "quantity": 8
+                    "quantity": 8,
+                    "sound_effect": ""
                 },
                 "Run": {
                     "path": "\\_RUN\\_RUN_",
-                    "quantity": 11
+                    "quantity": 11,
+                    "sound_effect": ""
                 },
                 "Throw": {
                     "path": "\\_THROW\\_THROW_",
-                    "quantity": 7
+                    "quantity": 7,
+                    "sound_effect": "\\sounds\\effects\\club_throw.wav"
                 },
                 "Walk": {
                     "path": "\\_WALK\\_WALK_",
-                    "quantity": 7
+                    "quantity": 7,
+                    "sound_effect": ""
                 },
                 "Special Attack": {
                     "path": "\\_ATTACK_SPECIAL\\_ATTACK_SPECIAL_",
-                    "quantity": 4
+                    "quantity": 4,
+                    "sound_effect": "\\sounds\\effects\\boss_special.wav"
                 }
             }
         }

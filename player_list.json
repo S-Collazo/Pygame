@@ -15,44 +15,54 @@
                 "name": "Knight Shield",
                 "path": "\\images\\elements\\knight_shield\\knight_shield",
                 "quantity": 2,
-                "attack_power": 20
+                "attack_power": 20,
+                "sound_effect": "\\sounds\\effects\\shield_hit.wav"
             },
             "animations": {
                 "Attack": {
                     "path": "\\_ATTACK\\_ATTACK_",
-                    "quantity": 5
+                    "quantity": 5,
+                    "sound_effect": "\\sounds\\effects\\player_attack.wav"
                 },
                 "Block": {
                     "path": "\\_BLOCK\\_BLOCK_",
-                    "quantity": 3
+                    "quantity": 3,
+                    "sound_effect": "\\sounds\\effects\\shield_block.wav"
                 },
                 "Die": {
                     "path": "\\_DIE\\_DIE_",
-                    "quantity": 3
+                    "quantity": 3,
+                    "sound_effect": "\\sounds\\effects\\player_death.wav"
                 },
                 "Hurt": {
                     "path": "\\_HURT\\_HURT_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 },
                 "Idle": {
                     "path": "\\_IDLE\\_IDLE_",
-                    "quantity": 2
+                    "quantity": 2,
+                    "sound_effect": ""
                 },
                 "Jump": {
                     "path": "\\_JUMP\\_JUMP_",
-                    "quantity": 11
+                    "quantity": 11,
+                    "sound_effect": ""
                 },
                 "Run": {
                     "path": "\\_RUN\\_RUN_",
-                    "quantity": 4
+                    "quantity": 4,
+                    "sound_effect": ""
                 },
                 "Throw": {
                     "path": "\\_THROW\\_THROW_",
-                    "quantity": 7
+                    "quantity": 7,
+                    "sound_effect": "\\sounds\\effects\\shield_throw.wav"
                 },
                 "Walk": {
                     "path": "\\_WALK\\_WALK_",
-                    "quantity": 5
+                    "quantity": 5,
+                    "sound_effect": ""
                 }
             }
         }

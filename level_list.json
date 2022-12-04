@@ -3,7 +3,7 @@
         "background_image": "\\images\\locations\\set_bg_06\\creepy_forest_000.png",
         "soundtrack": "\\sounds\\soundtrack\\ost_001.mp3",
         "gravity": 10,
-        "frame_rate_ms": 2000,
+        "frame_rate_ms": 100,
         "move_rate_ms": 40,
         "boss_room": 0,
         "player": {
@@ -151,7 +151,7 @@
             "trap_dimensions": "50,50",
             "trap_position": [
                 "10,475",
-                "900,675"
+                "750,675"
             ]
         },
         "item": {

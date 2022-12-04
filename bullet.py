@@ -25,6 +25,7 @@ class Bullet:
         self.rect.y = y
         
         self.attack_power = self.bullet_asset["attack_power"]
+        self.attack_sound = self.bullet_asset["sound_effect"]
         
         self.rect_body_collition = pygame.Rect(self.rect)
         
@@ -47,7 +48,6 @@ class Bullet:
             for entidad in self.lista_entidades:
                 if not(self.asset_name == entidad.asset_name or entidad.is_dying):
                     if(self.rect_body_collition.colliderect(entidad.rect_collition)):
-                        print("A")
                         self.is_shoot = False
                         break
             

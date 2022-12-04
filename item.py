@@ -1,5 +1,6 @@
 import pygame
 from constants import *
+from sounds import Sound
 from auxiliar import Auxiliar
 
 class Item:
@@ -35,6 +36,7 @@ class Health_Potion (Item):
         self.h = item_dimensions[1]
         super().__init__ (path=self.path,x=x,y=y,w=self.w,h=self.h,p_scale=p_scale,used=used)
         self.healing_power = self.asset["healing_power"]
+        self.healing_sound = self.asset["sound_effect"]
     
     def healing (self,lista_personajes):        
         for personaje in lista_personajes:
@@ -43,6 +45,7 @@ class Health_Potion (Item):
                             personaje.hitpoints += self.healing_power
                         else:
                             personaje.hitpoints = personaje.hitpoints_max
+                        Sound.sound_effect(self.healing_sound)
                         self.used = True
             break
       
@@ -65,11 +68,13 @@ class Gem (Item):
         self.w = item_dimensions[0]
         self.h = item_dimensions[1]
         super().__init__ (path=self.path,x=x,y=y,w=self.w,h=self.h,p_scale=p_scale,used=used)
+        self.currency_sound = self.asset["sound_effect"]
     
     def earning (self,lista_personajes):        
         for personaje in lista_personajes:
             if(self.rect_collition.colliderect(personaje.rect_collition)):
                         personaje.currency += self.currency_value
+                        Sound.sound_effect(self.currency_sound)
                         self.used = True
             break
       

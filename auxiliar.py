@@ -51,6 +51,12 @@ class Auxiliar:
         return sprite
     
     @staticmethod
+    def getSoundFromJson(asset,animation):
+        asset_anim = asset["animations"]
+        sound_effect = asset_anim[animation]["sound_effect"]
+        return sound_effect
+    
+    @staticmethod
     def drawGrid(screen,block_size=10):
         for x in range(0, ANCHO_VENTANA, block_size):
             for y in range(0, ALTO_VENTANA, block_size):

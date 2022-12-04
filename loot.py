@@ -2,6 +2,7 @@ import pygame
 import random
 from item import *
 from constants import *
+from sounds import Sound
 from auxiliar import Auxiliar
 
 class Chest:
@@ -15,6 +16,7 @@ class Chest:
         self.chest_open = self.image_list[1]
         
         self.is_open = False
+        self.open_sound = "\\sounds\\effects\\chest.wav"
         
         self.image = self.chest_closed           
         self.rect = self.image.get_rect()
@@ -40,6 +42,7 @@ class Chest:
         for personaje in lista_personajes:
             if (personaje.rect_body_collition.colliderect(self.rect_collition)):
                 self.get_loot(lista_items)
+                Sound.sound_effect(self.open_sound)
                 self.image = self.chest_open
                 self.is_open = True
 
