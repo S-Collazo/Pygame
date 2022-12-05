@@ -1,6 +1,7 @@
 REQUISITOS:
   - Python 3.9.12
   - Anaconda 4.14.0
+  - Pygame
 
 CONTROLES:
   FLECHA IZQUIERDA - Mover/Apuntar a la izquierda. 
