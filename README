@@ -1,32 +1,32 @@
 REQUISITOS:
-- Python 3.9.12
-- Anaconda 4.14.0
+  - Python 3.9.12
+  - Anaconda 4.14.0
 
 CONTROLES:
-FLECHA IZQUIERDA - Mover/Apuntar a la izquierda. 
-FLECHA DERECHA - Mover/Apuntar a la derecha.
-BARRA ESPACIADORA - Saltar (en la última dirección indicada).
+  FLECHA IZQUIERDA - Mover/Apuntar a la izquierda. 
+  FLECHA DERECHA - Mover/Apuntar a la derecha.
+  BARRA ESPACIADORA - Saltar (en la última dirección indicada).
 
-A - Atacar.
-S - Disparar proyectil.
-D - Bloquear (Puede mantenerse apretado).
+  A - Atacar.
+  S - Disparar proyectil.
+  D - Bloquear (Puede mantenerse apretado).
 
-ESCAPE - Menú de pausa.
+  ESCAPE - Menú de pausa.
 
 FUNCIONAMIENTO:
-Ejecutar "main.py" para correr el juego.
+  Ejecutar "main.py" para correr el juego.
 
-El propósito del jugador es eliminar a todos los enemigos en cada nivel y, de forma opcional, conseguir una puntuación alta.
-Los enemigos sueltan la moneda del juego, la cual contribuye al puntuación final de cada nivel y del juego completo.
-El jugador cuenta con puntos de vida, representados por la barra en la esquina superior izquierda. Los ataques enemigos y trampas reducen puntos de vida. En caso de perder todos sus puntos, el jugador muere y el nivel se considera fallado.
-El nivel cuenta con dos tipos de objetos elegidos y dispuestos de forma aleatoria. El primer tipo son gemas que contribuyen al puntuación del jugador; el segundo tipo, pociones que recuperan puntos de vida.
-Finalmente, cada nivel cuenta con un temporizador que marca cuánto tiempo se tardó en completar. El jugador puede obtener multiplicadores al puntuación de cada nivel si se completa lo suficientemente rápido.
+  El propósito del jugador es eliminar a todos los enemigos en cada nivel y, de forma opcional, conseguir una puntuación alta.
+  Los enemigos sueltan la moneda del juego, la cual contribuye al puntuación final de cada nivel y del juego completo.
+  El jugador cuenta con puntos de vida, representados por la barra en la esquina superior izquierda. Los ataques enemigos y trampas reducen puntos de vida. En caso de perder todos sus puntos, el jugador muere y el nivel se considera fallado.
+  El nivel cuenta con dos tipos de objetos elegidos y dispuestos de forma aleatoria. El primer tipo son gemas que contribuyen al puntuación del jugador; el segundo tipo, pociones que recuperan puntos de vida.
+  Finalmente, cada nivel cuenta con un temporizador que marca cuánto tiempo se tardó en completar. El jugador puede obtener multiplicadores al puntuación de cada nivel si se completa lo suficientemente rápido.
 
-El primer nivel se completa eliminando a todos los enemigos presentes.
-El segundo nivel genera enemigos cada cierto tiempo y se completa cuando ya no quedan más enemigos para generar.
-El tercer nivel cuenta con un jefe y se completa cuando este es eliminado. El jefe puede invocar más enemigos pero no es necesario eliminarlos para completar el nivel (eliminar al jefe los elimina también).
+  El primer nivel se completa eliminando a todos los enemigos presentes.
+  El segundo nivel genera enemigos cada cierto tiempo y se completa cuando ya no quedan más enemigos para generar.
+  El tercer nivel cuenta con un jefe y se completa cuando este es eliminado. El jefe puede invocar más enemigos pero no es necesario eliminarlos para completar el nivel (eliminar al jefe los elimina también).
 
-Una vez completado el tercer nivel, el jugador pasa a la pantalla de puntaciones, donde se calcula su puntuación final. También puede ver una tabla con las puntuaciones más altas y registrar la suya (solo se muestran las cinco más altas).
+  Una vez completado el tercer nivel, el jugador pasa a la pantalla de puntaciones, donde se calcula su puntuación final. También puede ver una tabla con las puntuaciones más altas y registrar la suya (solo se muestran las cinco más altas).
 
 EXTRA:
-El juego cuenta con música de fondo y efectos de sonidos. Es posible cambiar el volúmen de ambos en el menu de inicio y pausa, o directamente silenciarlos.
+  El juego cuenta con música de fondo y efectos de sonidos. Es posible cambiar el volúmen de ambos en el menu de inicio y pausa, o directamente silenciarlos.
