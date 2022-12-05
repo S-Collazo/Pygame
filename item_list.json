@@ -4,13 +4,15 @@
             "name": "Basic Gem",
             "asset_folder": [
                 "\\images\\coin\\gem_moonstone\\gem_moonstone",
-                "\\images\\tileset\\creepy_forest\\Objects\\gem_ore"
+                "\\images\\tileset\\creepy_forest\\Objects\\gem_ore",
+                "\\images\\coin\\gem_ruby\\gem_ruby"
             ],
             "asset_dimensions": "100,200",
             "sound_effect": "\\sounds\\effects\\coin.wav",
             "currency_value": [
                 100,
-                200
+                200,
+                500
             ]
         }
     },

@@ -38,8 +38,8 @@ class Boss(Enemy):
     def death (self):
         super().death()
         
-    def drop_loot (self,lista_items,item_asset,currency_multiplier):
-        super().drop_loot(lista_items,item_asset,currency_multiplier)
+    def drop_loot (self,lista_items,item_asset,boss_drop=True):
+        super().drop_loot(lista_items,item_asset,boss_drop)
         
     def update(self, delta_ms, lista_plataformas, lista_oponente, lista_balas, lista_items, item_asset, lista_enemigos, spawner):
         super().update(delta_ms, lista_plataformas, lista_items,item_asset)

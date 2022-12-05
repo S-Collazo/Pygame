@@ -22,9 +22,9 @@ class Enemy(Entity):
         self.can_block = False
         self.can_throw = False
                        
-    def drop_loot (self,lista_items,item_asset,currency_multiplier=1):
-        gem_reward = Gem(asset=item_asset,name="Basic Gem",x=self.rect.x + (self.rect.w / 2),y=self.rect.y + (self.rect.h / 2),sounds=self.sounds,p_scale=1,enemy_drop=True)
-        gem_reward.currency_value = gem_reward.currency_value * currency_multiplier
+    def drop_loot (self,lista_items,item_asset,boss_drop=False):
+        gem_reward = Gem(asset=item_asset,name="Basic Gem",x=self.rect.x + (self.rect.w / 2),y=self.rect.y + (self.rect.h / 2),sounds=self.sounds,p_scale=1,enemy_drop=True,boss_drop=boss_drop)
+        gem_reward.currency_value = gem_reward.currency_value
         lista_items.append(gem_reward)
                      
     def update (self,delta_ms,lista_plataformas,lista_items,item_asset):          

@@ -57,11 +57,15 @@ class Health_Potion (Item):
             super().draw(screen)
             
 class Gem (Item):
-    def __init__ (self,asset,name,x,y,sounds,p_scale=0.8,enemy_drop=False,used=False):
+    def __init__ (self,asset,name,x,y,sounds,p_scale=0.8,enemy_drop=False,boss_drop=False,used=False):
         self.asset = asset["Currency"][name]
         if (enemy_drop):
-            self.path= self.asset["asset_folder"][0]
-            self.currency_value = self.asset["currency_value"][0]
+            if (boss_drop):
+                self.path= self.asset["asset_folder"][2]
+                self.currency_value = self.asset["currency_value"][2]
+            else:
+                self.path= self.asset["asset_folder"][0]
+                self.currency_value = self.asset["currency_value"][0]
         else:
             self.path= self.asset["asset_folder"][1]
             self.currency_value = self.asset["currency_value"][1]
