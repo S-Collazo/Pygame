@@ -3,7 +3,7 @@
         "background_image": "\\images\\locations\\set_bg_06\\creepy_forest_000.png",
         "soundtrack": "\\sounds\\soundtrack\\ost_001.mp3",
         "gravity": 10,
-        "frame_rate_ms": 100,
+        "frame_rate_ms": 120,
         "move_rate_ms": 40,
         "boss_room": 0,
         "player": {
@@ -193,7 +193,7 @@
         "background_image": "\\images\\locations\\set_bg_06\\creepy_forest_001.png",
         "soundtrack": "\\sounds\\soundtrack\\ost_002.mp3",
         "gravity": 10,
-        "frame_rate_ms": 100,
+        "frame_rate_ms": 120,
         "move_rate_ms": 40,
         "boss_room": 0,
         "player": {
@@ -326,7 +326,7 @@
         "background_image": "\\images\\locations\\set_bg_06\\castle_bridge.png",
         "soundtrack": "\\sounds\\soundtrack\\ost_003.mp3",
         "gravity": 10,
-        "frame_rate_ms": 100,
+        "frame_rate_ms": 120,
         "move_rate_ms": 40,
         "boss_room": 1,
         "player": {

@@ -96,6 +96,8 @@ while True:
                 
                 game_state = death.death_screen(delta_ms,lista_eventos)
                 
+                
+                
                 pygame.display.flip()
                 
             while (game_state == GAME_VICTORY):
