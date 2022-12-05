@@ -9,10 +9,11 @@ from sounds import Sounds
 class Pause:
     def __init__ (self,screen,sounds):
         self.screen = screen
-        self.pause_main = PauseMain(name="pause_main",master_surface = screen,x=300,y=200,w=400,h=300,background_color=GREY,border_color=None,active=True)
-        self.pause_options = PauseOptions(name="pause_options",master_surface = screen,x=300,y=200,w=400,h=300,background_color=GREY,border_color=None,active=False)
+        self.pause_main = PauseMain(name="pause_main",master_surface = screen,x=300,y=200,w=400,h=300,background_color=BLACK,border_color=None,active=True)
+        self.pause_options = PauseOptions(name="pause_options",master_surface = screen,x=300,y=200,w=400,h=300,background_color=BLACK,border_color=None,active=False,sounds=sounds)
         
         self.sounds = sounds
+        self.mute_state = False
         
         self.exit = False
         
@@ -27,7 +28,7 @@ class Pause:
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    Sounds.music_pause(False)
+                    self.sounds.music_pause(self.mute_state)
                     self.game_state = GAME_RUNNING
                     return self.game_state
                                     
@@ -38,11 +39,12 @@ class Pause:
         elif(self.pause_options.active):
             self.pause_options.update(lista_eventos)
             self.pause_options.draw()
+            self.mute_state = self.pause_options.mute_state
         else:
             if (self.exit):
                 self.game_state = GAME_MENU
             else:
-                Sounds.music_pause(False)
+                self.sounds.music_pause(self.mute_state)
                 self.game_state = GAME_RUNNING
                     
         return self.game_state

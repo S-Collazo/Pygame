@@ -7,14 +7,14 @@ from ui_start_options import StartOptions
 from ui_start_level_selector import LevelSelector
 
 class Start:
-    def __init__ (self,screen):
+    def __init__ (self,screen,sounds):
         self.screen = screen
         
         self.background_image = pygame.image.load(PATH_RECURSOS + "\\images\\background.png")
         self.background_image = pygame.transform.scale(self.background_image,(ANCHO_VENTANA,ALTO_VENTANA))
         
         self.start_main = StartMain(name="main",master_surface = self.screen,x=100,y=250,w=600,h=300,background_color=None,border_color=None,active=True)
-        self.start_options = StartOptions(name="options",master_surface = self.screen,x=100,y=200,w=600,h=300,background_color=None,border_color=None,active=False)
+        self.start_options = StartOptions(name="options",master_surface = self.screen,x=100,y=200,w=600,h=300,background_color=None,border_color=None,active=False,sounds=sounds)
         self.level_selector = LevelSelector(name="level_selector",master_surface = self.screen,x=100,y=200,w=600,h=300,background_color=None,border_color=None,active=False)
 
         self.level_number_value = 0

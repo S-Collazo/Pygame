@@ -24,8 +24,7 @@ class Level:
         self.level_number = level
         self.difficulty = difficulty
                            
-        level_list = Auxiliar.readJson("level_list.json")
-        level_info = level_list[self.level_number]
+        level_info = Auxiliar.readJson("level_{0}.json".format(self.level_number))
 
         lv_gravity = level_info["gravity"]
         lv_frame_rate_ms = level_info["frame_rate_ms"]

@@ -1,0 +1,122 @@
+{
+    "background_image": "\\images\\locations\\set_bg_06\\castle_bridge.png",
+    "soundtrack": "\\sounds\\soundtrack\\ost_003.mp3",
+    "gravity": 10,
+    "frame_rate_ms": 120,
+    "move_rate_ms": 40,
+    "boss_room": 1,
+    "player": {
+        "player_list": "player_list.json",
+        "player_quantity": [
+            1,
+            1,
+            1
+        ],
+        "p_scale": 0.1,
+        "player_starter_position": "0,500"
+    },
+    "enemy": {
+        "enemy_list": "enemy_list.json",
+        "enemy_spawner": 1,
+        "interval_time_spawn": [
+            2,
+            2,
+            2
+        ],
+        "enemy_quantity": [
+            4,
+            8,
+            12
+        ],
+        "p_scale": 0.2,
+        "enemy_type_number": [
+            3,
+            3,
+            3
+        ],
+        "enemy_type": [
+            "Standard/Grunt/Shaman",
+            "Standard/Grunt/Shaman",
+            "Standard/Grunt/Shaman"
+        ],
+        "enemy_starter_position": [
+            "100,0",
+            "300,0",
+            "600,0",
+            "900,0"
+        ]
+    },
+    "boss": {
+        "boss_list": "enemy_list.json",
+        "boss_name": "Goblin King",
+        "p_scale": 0.3,
+        "boss_starter_position": "700,350"
+    },
+    "platform": {
+        "platform_folder": "\\images\\tileset\\castle_bridge\\Tiles\\",
+        "floor_state": 0,
+        "p_scale": 0.4,
+        "platform_list": [
+            {
+                "x": 880,
+                "y": 550,
+                "w": 100,
+                "h": 100,
+                "tile_total": 6,
+                "tile_type": 0,
+                "add_bottom": 1
+            },
+            {
+                "x": -25,
+                "y": 650,
+                "w": 100,
+                "h": 100,
+                "tile_total": 30,
+                "tile_type": 13,
+                "add_bottom": 0
+            }
+        ]
+    },
+    "trap": {
+        "trap_quantity": [
+            0,
+            0,
+            0
+        ],
+        "p_scale": 0.4,
+        "trap_dimensions": "50,50",
+        "trap_position": [
+            "0,0"
+        ]
+    },
+    "item": {
+        "item_list": "item_list.json",
+        "item_quantity": [
+            0,
+            0,
+            0
+        ],
+        "p_scale": 1,
+        "item_position": [
+            "450,535"
+        ]
+    },
+    "chest": {
+        "chest_quantity": [
+            0,
+            0,
+            0
+        ],
+        "p_scale": 0.5,
+        "chest_dimensions": "200,100",
+        "chest_position": [
+            "0,0"
+        ]
+    },
+    "door": {
+        "asset_folder": "\\images\\door\\light",
+        "p_scale": 0.2,
+        "door_dimensions": "100,100",
+        "door_position": "950,400"
+    }
+}
