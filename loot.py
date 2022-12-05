@@ -2,11 +2,11 @@ import pygame
 import random
 from item import *
 from constants import *
-from sounds import Sound
+from sounds import Sounds
 from auxiliar import Auxiliar
 
 class Chest:
-    def __init__ (self,item_asset,x,y,w,h,p_scale=1):
+    def __init__ (self,item_asset,x,y,w,h,sounds,p_scale=1):
         self.item_asset = item_asset
         
         self.p_scale = p_scale * GLOBAL_SCALE
@@ -23,18 +23,20 @@ class Chest:
         self.rect.x = x
         self.rect.y = y
         
-        
+        self.sounds = sounds
         
         self.rect_collition = pygame.Rect(self.rect)
 
     def get_loot (self,lista_items):
         if not (self.is_open):
+            self.sounds.sound_effect(self.open_sound)
+            
             loot_number = random.randrange(10)
             
             if (loot_number % 2):
-                loot_reward = Gem(asset=self.item_asset,name="Basic Gem",x=self.rect.x + (self.rect.w / 3),y=self.rect.y - (self.rect.h / 2),p_scale=1,enemy_drop=True)
+                loot_reward = Gem(asset=self.item_asset,name="Basic Gem",x=self.rect.x + (self.rect.w / 3),y=self.rect.y - (self.rect.h / 2),sounds=self.sounds,p_scale=1,enemy_drop=True)
             else:
-                loot_reward = Health_Potion(asset=self.item_asset,name="Basic Health Potion",x=self.rect.x + (self.rect.w / 3),y=self.rect.y - (self.rect.h / 2),p_scale=1.5)
+                loot_reward = Health_Potion(asset=self.item_asset,name="Basic Health Potion",x=self.rect.x + (self.rect.w / 3),y=self.rect.y - (self.rect.h / 2),sounds=self.sounds,p_scale=1.5)
 
             lista_items.append(loot_reward)
         
@@ -42,7 +44,6 @@ class Chest:
         for personaje in lista_personajes:
             if (personaje.rect_body_collition.colliderect(self.rect_collition)):
                 self.get_loot(lista_items)
-                Sound.sound_effect(self.open_sound)
                 self.image = self.chest_open
                 self.is_open = True
 

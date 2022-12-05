@@ -2,10 +2,10 @@ import pygame
 from constants import *
 from auxiliar import Auxiliar
 from ammo import Ammo
-from sounds import Sound
+from sounds import Sounds
 
 class Entity:
-    def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=1,interval_time=FPS) -> None:  
+    def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,sounds,direction_inicial=DIRECTION_R,p_scale=1,interval_time=FPS) -> None:  
         self.p_scale = p_scale * GLOBAL_SCALE
         self.asset = asset
         self.asset_name = asset["name"]
@@ -82,6 +82,8 @@ class Entity:
                 
         self.rect_body_collition = pygame.Rect(x+10,y,self.rect.width/2,self.rect.height)
         
+        self.sounds = sounds
+        
         self.attack_sound = Auxiliar.getSoundFromJson(self.asset,"Attack")
         self.block_sound = Auxiliar.getSoundFromJson(self.asset,"Block")
         self.death_sound = Auxiliar.getSoundFromJson(self.asset,"Die")
@@ -156,7 +158,7 @@ class Entity:
                 else:
                     self.animation = self.shoot_l
                     
-                Sound.sound_effect(self.throw_sound)  
+                self.sounds.sound_effect(self.throw_sound)  
                     
             Ammo(asset=self.asset,lista_balas=lista_balas,x=self.rect.x,y=self.rect.y,frame_rate_ms=self.frame_rate_ms,move_rate_ms=self.move_rate_ms,direction=self.direction,p_scale=self.p_scale)
      
@@ -178,7 +180,7 @@ class Entity:
             self.move_x = 0
             self.move_y = 0
             
-            Sound.sound_effect(self.death_sound)  
+            self.sounds.sound_effect(self.death_sound)  
                                                                         
     def is_on_platform(self,lista_plataformas):
         retorno = False

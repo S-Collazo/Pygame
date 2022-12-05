@@ -15,11 +15,11 @@ from loot import *
 from door import Door
 from damage_control import *
 from ui_screen_info import *
-from sounds import Sound
+from sounds import Sounds
 from auxiliar import Auxiliar
 
 class Level:
-    def __init__(self,screen,level,difficulty):        
+    def __init__(self,screen,level,difficulty,sounds):        
         self.screen = screen
         self.level_number = level
         self.difficulty = difficulty
@@ -47,23 +47,26 @@ class Level:
 
         self.background_image = pygame.image.load(PATH_RECURSOS + level_info["background_image"])
         self.background_image = pygame.transform.scale(self.background_image,(ANCHO_VENTANA,ALTO_VENTANA))
+      
+        self.sounds = sounds
+        self.sounds.soundtrack(lv_soundtrack)
 
         self.player_list = Auxiliar.readJson(player_info["player_list"])
         self.lista_personajes = []
         for n in range(player_info["player_quantity"][self.difficulty]):
             player_coordinates = Auxiliar.splitIntoInt(player_info["player_starter_position"],",")
-            self.lista_personajes.append(Player(asset=self.player_list,name="Iron Knight",x=player_coordinates[0],y=player_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms))
+            self.lista_personajes.append(Player(asset=self.player_list,name="Iron Knight",x=player_coordinates[0],y=player_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,sounds=self.sounds))
 
         self.enemy_list = Auxiliar.readJson(enemy_info["enemy_list"])
         self.lista_enemigos = []
         if (self.has_spawner or self.boss_room):
             if (self.has_spawner):
-                self.spawner = Spawner(difficulty=self.difficulty,enemy=enemy_info,enemy_list=self.enemy_list,gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms) 
+                self.spawner = Spawner(difficulty=self.difficulty,enemy=enemy_info,enemy_list=self.enemy_list,gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,sounds=self.sounds) 
             if(self.boss_room):
                 self.boss_name = boss_info["boss_name"]
                 self.boss_list = Auxiliar.readJson(boss_info["boss_list"])
                 boss_coordinates = Auxiliar.splitIntoInt(boss_info["boss_starter_position"],",")
-                self.lista_enemigos.append(Boss(asset=self.boss_list,name= self.boss_name,x=boss_coordinates[0],y=boss_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,difficulty=self.difficulty,p_scale=boss_info["p_scale"]))
+                self.lista_enemigos.append(Boss(asset=self.boss_list,name= self.boss_name,x=boss_coordinates[0],y=boss_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,difficulty=self.difficulty,sounds=self.sounds,p_scale=boss_info["p_scale"]))
             
                 self.spawner.active = False
         else:
@@ -73,11 +76,11 @@ class Level:
                 enemy_type = Auxiliar.splitIntoString(enemy_info["enemy_type"][self.difficulty],"/")
                 enemy_coordinates = Auxiliar.splitIntoInt(enemy_info["enemy_starter_position"][enemy_coordinates_value],",")
                 if (enemy_type[enemy_type_value] == "Standard"):
-                    self.lista_enemigos.append(Goblin_Standard(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=enemy_info["p_scale"]))  
+                    self.lista_enemigos.append(Goblin_Standard(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,sounds=self.sounds,p_scale=enemy_info["p_scale"]))  
                 elif (enemy_type[enemy_type_value] == "Grunt"):
-                    self.lista_enemigos.append(Goblin_Grunt(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=enemy_info["p_scale"]))  
+                    self.lista_enemigos.append(Goblin_Grunt(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,sounds=self.sounds,p_scale=enemy_info["p_scale"]))  
                 else:
-                    self.lista_enemigos.append(Goblin_Shaman(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=enemy_info["p_scale"]))
+                    self.lista_enemigos.append(Goblin_Shaman(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,sounds=self.sounds,p_scale=enemy_info["p_scale"]))
 
         self.lista_plataformas = []
         for n in range(int(len(platform_info["platform_list"]))):
@@ -102,20 +105,20 @@ class Level:
                     item_type = random.randrange(item_info["item_quantity"][self.difficulty])
                 item_coordinates = Auxiliar.splitIntoInt(item_info["item_position"][n],",")
                 if (item_type % 2 == 0):
-                    self.lista_items.append(Gem(asset=self.item_list,name="Basic Gem",x=item_coordinates[0],y=item_coordinates[1],p_scale=item_info["p_scale"]))
+                    self.lista_items.append(Gem(asset=self.item_list,name="Basic Gem",x=item_coordinates[0],y=item_coordinates[1],sounds=self.sounds,p_scale=item_info["p_scale"]))
                 else:
-                    self.lista_items.append(Health_Potion(asset=self.item_list,name="Basic Health Potion",x=item_coordinates[0],y=item_coordinates[1]))
+                    self.lista_items.append(Health_Potion(asset=self.item_list,name="Basic Health Potion",x=item_coordinates[0],y=item_coordinates[1],sounds=self.sounds))
 
         self.lista_chests = []
         if(chest_info["chest_quantity"][self.difficulty] > 0):
             for n in range(chest_info["chest_quantity"][self.difficulty]):
                 chest_coordinates = Auxiliar.splitIntoInt(chest_info["chest_position"][n],",")
                 chest_dimensions = Auxiliar.splitIntoInt(chest_info["chest_dimensions"],",")
-                self.lista_chests.append(Chest(item_asset=self.item_list,x=chest_coordinates[0],y=chest_coordinates[1],w=chest_dimensions[0],h=chest_dimensions[1],p_scale=chest_info["p_scale"]))
+                self.lista_chests.append(Chest(item_asset=self.item_list,x=chest_coordinates[0],y=chest_coordinates[1],w=chest_dimensions[0],h=chest_dimensions[1],sounds=self.sounds,p_scale=chest_info["p_scale"]))
 
         self.lista_balas = []
 
-        self.damage_control = Damage_Control(self.lista_personajes,self.lista_enemigos,self.lista_balas,self.lista_trampas)
+        self.damage_control = Damage_Control(self.lista_personajes,self.lista_enemigos,self.lista_balas,self.lista_trampas,self.sounds)
 
         self.screen_info = ScreenInfo(entity=self.lista_personajes[0],name="ScreenInfo",master_surface=self.screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=None,border_color=None,active=True)
 
@@ -130,8 +133,6 @@ class Level:
         self.time_final = [0,0]
         
         self.level_clear = False
-        
-        Sound.soundtrack(lv_soundtrack)
                          
     def run_level (self,delta_ms,lista_eventos,keys):                        
         self.game_state = GAME_RUNNING

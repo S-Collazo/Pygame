@@ -4,8 +4,8 @@ from enemy import Enemy
 from ammo import Ammo
                                     
 class Goblin_Standard (Enemy):
-    def __init__(self, asset, x, y, gravity, frame_rate_ms, move_rate_ms, p_scale=0.1):
-        super().__init__(asset, "Goblins", "Goblin Standard", x, y, gravity,frame_rate_ms, move_rate_ms, p_scale)
+    def __init__(self, asset, x, y, gravity, frame_rate_ms, move_rate_ms, sounds,p_scale=0.1):
+        super().__init__(asset, "Goblins", "Goblin Standard", x, y, gravity,frame_rate_ms, move_rate_ms, sounds,p_scale)
 
     def update(self, delta_ms, lista_plataformas, lista_oponente, lista_balas, lista_items,item_asset):
         super().update(delta_ms, lista_plataformas, lista_items,item_asset)
@@ -54,8 +54,8 @@ class Goblin_Standard (Enemy):
                             super().walk(DIRECTION_L)
                         
 class Goblin_Grunt (Enemy):
-    def __init__(self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,p_scale=0.1):
-        super().__init__ (asset,"Goblins","Goblin Grunt",x,y,gravity,frame_rate_ms,move_rate_ms,p_scale)
+    def __init__(self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,sounds,p_scale=0.1):
+        super().__init__ (asset,"Goblins","Goblin Grunt",x,y,gravity,frame_rate_ms,move_rate_ms,sounds,p_scale)
         self.can_block = True
         
     def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas,lista_items,item_asset):
@@ -116,8 +116,8 @@ class Goblin_Grunt (Enemy):
                             super().walk(DIRECTION_L)
                                     
 class Goblin_Shaman (Enemy):
-    def __init__(self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,p_scale=0.1):
-        super().__init__ (asset,"Goblins","Goblin Shaman",x,y,gravity,frame_rate_ms,move_rate_ms,p_scale)
+    def __init__(self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,sounds,p_scale=0.1):
+        super().__init__ (asset,"Goblins","Goblin Shaman",x,y,gravity,frame_rate_ms,move_rate_ms,sounds,p_scale)
         self.can_throw = True
         
     def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas,lista_items,item_asset):

@@ -1,4 +1,5 @@
 import pygame
+import traceback
 from ui_start import Start
 from ui_pause import Pause
 from ui_death import Death
@@ -9,7 +10,7 @@ from pygame.locals import *
 from constants import *
 from loot import *
 from damage_control import *
-from sounds import Sound
+from sounds import Sounds
 
 flags = DOUBLEBUF
 
@@ -26,9 +27,10 @@ pygame.init()
 clock = pygame.time.Clock()
 
 while True:
+    sounds = Sounds()
     start = Start(screen)
-    pause_menu = Pause(screen)
-    death = Death(screen)
+    pause_menu = Pause(screen,sounds)
+    death = Death(screen,sounds)
     
     while (game_state == GAME_MENU):
             lista_eventos = pygame.event.get()
@@ -40,7 +42,7 @@ while True:
             pygame.mixer.stop()
             
             level_number_value = start.level_number_value
-            level_number = "Nivel {0}".format(level_number_value)
+            level_number = "level_{0}".format(level_number_value)
             level_difficulty = start.level_difficulty
             
             pygame.display.flip()
@@ -53,12 +55,13 @@ while True:
             game_state = GAME_RUNNING
             
         try:
-            level = Level(screen,level_number,level_difficulty)
-            win = Win(screen,level.lista_personajes[0],level.time_final,level.has_spawner,level.boss_room)
+            level = Level(screen,level_number,level_difficulty,sounds)
+            win = Win(screen,level.lista_personajes[0],level.time_final,sounds,level.has_spawner,level.boss_room)
         except:
+            traceback.print_exc()
             game_state = GAME_END
             
-        highscore = Highscore(screen)
+        highscore = Highscore(screen,sounds)
                 
         while not (game_state == GAME_MENU or game_state == GAME_RESTART or game_state == GAME_CONTINUE):
             while (game_state == GAME_PAUSE):
@@ -95,8 +98,6 @@ while True:
                 pause_menu.pause_main.active = True
                 
                 game_state = death.death_screen(delta_ms,lista_eventos)
-                
-                
                 
                 pygame.display.flip()
                 

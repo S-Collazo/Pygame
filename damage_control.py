@@ -1,13 +1,15 @@
 import pygame
 from constants import *
-from sounds import Sound
+from sounds import Sounds
 
 class Damage_Control:
-    def __init__(self, lista_personajes, lista_enemigos, lista_balas, lista_trampas):
+    def __init__(self, lista_personajes, lista_enemigos, lista_balas, lista_trampas,sounds):
         self.lista_personajes = lista_personajes
         self.lista_enemigos = lista_enemigos
         self.lista_balas = lista_balas
         self.lista_trampas = lista_trampas
+
+        self.sounds = sounds
 
     def damage(self, lista_atacante, lista_atacado):
         for atacante in lista_atacante:
@@ -16,10 +18,10 @@ class Damage_Control:
                     if not (atacado.is_dying or atacado.is_hurt) and (atacante.is_attack or atacante.is_shoot) and not (atacado.asset_name == atacante.asset_name): 
                         if((atacante.rect_body_collition.colliderect(atacado.rect_collition))):
                             if(atacado.is_block):
-                                Sound.sound_effect(atacado.block_sound)
+                                self.sounds.sound_effect(atacado.block_sound)
                             else:
                                 atacado.hitpoints -= atacante.attack_power
-                                Sound.sound_effect(atacante.attack_sound)
+                                self.sounds.sound_effect(atacante.attack_sound)
                                 
                                 if(DEBUG):
                                     print("{0} hit {1}".format(atacante.asset_name,atacado.asset_name))

@@ -4,10 +4,10 @@ from entity import Entity
 from ammo import Ammo
 
 class Player(Entity):
-    def __init__ (self,asset,name,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=0.1) -> None:
+    def __init__ (self,asset,name,x,y,gravity,frame_rate_ms,move_rate_ms,sounds,direction_inicial=DIRECTION_R,p_scale=0.1) -> None:
         self.asset = asset["Player"][name]
         
-        super().__init__(self.asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial,p_scale)
+        super().__init__(self.asset,x,y,gravity,frame_rate_ms,move_rate_ms,sounds,direction_inicial,p_scale)
     
         self.currency = 0
                                                                                      

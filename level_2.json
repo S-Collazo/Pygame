@@ -1,0 +1,131 @@
+{
+    "background_image": "\\images\\locations\\set_bg_06\\creepy_forest_001.png",
+    "soundtrack": "\\sounds\\soundtrack\\ost_002.mp3",
+    "gravity": 10,
+    "frame_rate_ms": 120,
+    "move_rate_ms": 40,
+    "boss_room": 0,
+    "player": {
+        "player_list": "player_list.json",
+        "player_quantity": [
+            1,
+            1,
+            1
+        ],
+        "p_scale": 0.1,
+        "player_starter_position": "0,650"
+    },
+    "enemy": {
+        "enemy_list": "enemy_list.json",
+        "enemy_spawner": 1,
+        "interval_time_spawn": [
+            5,
+            3,
+            1
+        ],
+        "enemy_quantity": [
+            10,
+            20,
+            30
+        ],
+        "p_scale": 0.2,
+        "enemy_type_number": [
+            1,
+            2,
+            3
+        ],
+        "enemy_type": [
+            "Standard",
+            "Standard/Grunt",
+            "Standard/Grunt/Shaman"
+        ],
+        "enemy_starter_position": [
+            "200,0",
+            "400,0",
+            "600,0",
+            "800,0"
+        ]
+    },
+    "boss": {
+        "boss_list": "enemy_list.json",
+        "boss_name": "null",
+        "p_scale": 1.2,
+        "boss_starter_position": "0,0"
+    },
+    "platform": {
+        "platform_folder": "\\images\\tileset\\creepy_forest\\Tiles\\",
+        "floor_state": 1,
+        "p_scale": 0.4,
+        "platform_list": [
+            {
+                "x": 0,
+                "y": 650,
+                "w": 100,
+                "h": 100,
+                "tile_total": 3,
+                "tile_type": 0,
+                "add_bottom": 0
+            },
+            {
+                "x": 310,
+                "y": 600,
+                "w": 100,
+                "h": 100,
+                "tile_total": 10,
+                "tile_type": 13,
+                "add_bottom": 0
+            },
+            {
+                "x": 880,
+                "y": 650,
+                "w": 100,
+                "h": 100,
+                "tile_total": 3,
+                "tile_type": 0,
+                "add_bottom": 0
+            }
+        ]
+    },
+    "trap": {
+        "trap_quantity": [
+            0,
+            0,
+            0
+        ],
+        "p_scale": 0.4,
+        "trap_dimensions": "50,50",
+        "trap_position": [
+            "0,0"
+        ]
+    },
+    "item": {
+        "item_list": "item_list.json",
+        "item_quantity": [
+            1,
+            1,
+            0
+        ],
+        "p_scale": 1,
+        "item_position": [
+            "450,500"
+        ]
+    },
+    "chest": {
+        "chest_quantity": [
+            0,
+            0,
+            0
+        ],
+        "p_scale": 0.5,
+        "chest_dimensions": "200,100",
+        "chest_position": [
+            "0,0"
+        ]
+    },
+    "door": {
+        "asset_folder": "\\images\\door\\light",
+        "p_scale": 0.2,
+        "door_dimensions": "100,100",
+        "door_position": "950,450"
+    }
+}

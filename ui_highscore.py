@@ -5,9 +5,10 @@ from constants import *
 from ui_highscore_main import HighscoreMain
 from ui_highscore_table import HighscoreTable
 from ui_highscore_register import HighscoreRegister
+from sounds import Sounds
 
 class Highscore:
-    def __init__ (self,screen):
+    def __init__ (self,screen,sounds):
         self.screen = screen
         
         self.background_image = pygame.image.load(PATH_RECURSOS + "\\images\\background_end.png")
@@ -17,11 +18,20 @@ class Highscore:
         self.highscore_table = HighscoreTable(name="highscore_table",master_surface=screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=None,border_color=None,active=False)
         self.highscore_register = HighscoreRegister(name="highscore_register",master_surface=screen,x=300,y=300,w=300,h=100,background_color=BLACK,border_color=None,active=False)
         
+        self.sounds = sounds
+        self.highscore_sound = "\\sounds\\effects\\highscore.wav"
+        self.sound_flag = True
+        
         self.score = 0
         self.exit = False
         
     def highscore_screen (self,delta_ms,lista_eventos,score_list):
         self.game_state = GAME_END
+         
+        if(self.sound_flag):    
+            self.sounds.sound_stop()
+            self.sounds.sound_effect(sound=self.highscore_sound)
+            self.sound_flag = False
             
         for event in lista_eventos:
             if event.type == pygame.QUIT:

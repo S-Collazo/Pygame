@@ -2,14 +2,15 @@ import pygame
 from constants import *
 from enemy import Enemy
 from ammo import Ammo
-from sounds import Sound
+from sounds import Sounds
 from auxiliar import Auxiliar
 
 class Boss(Enemy):
-    def __init__(self, asset, name, x, y, gravity, frame_rate_ms, move_rate_ms,difficulty,p_scale=1.2):
+    def __init__(self, asset, name, x, y, gravity, frame_rate_ms, move_rate_ms,difficulty,sounds,p_scale=1.2):
         self.asset = asset
         self.difficulty = difficulty
-        super().__init__(self.asset, "Bosses", name, x, y, gravity,frame_rate_ms, move_rate_ms, p_scale)
+        self.sounds = sounds
+        super().__init__(self.asset, "Bosses", name, x, y, gravity,frame_rate_ms, move_rate_ms, self.sounds, p_scale)
         
         self.tiempo_last_attack_special = 0
         self.interval_time_attack_special = self.interval_time * self.asset["interval_attack_special"]
@@ -31,7 +32,7 @@ class Boss(Enemy):
                 else:
                     self.animation = self.attack_l
                     
-                Sound.sound_effect(self.attack_special_sound)
+                self.sounds.sound_effect(self.attack_special_sound)
                     
                 spawner.boss_spawn(lista_enemigos,self.attack_special_value)
     
