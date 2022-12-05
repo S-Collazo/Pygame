@@ -2,7 +2,6 @@ import pygame
 from constants import *
 from auxiliar import Auxiliar
 from ammo import Ammo
-from sounds import Sounds
 
 class Entity:
     def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,sounds,direction_inicial=DIRECTION_R,p_scale=1,interval_time=FPS) -> None:  

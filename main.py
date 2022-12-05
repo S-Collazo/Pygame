@@ -38,7 +38,7 @@ while True:
                 
             game_state = start.start_menu(delta_ms,lista_eventos,keys)
             
-            pygame.mixer.stop()
+            sounds.sound_stop()
             
             level_number = start.level_number_value
             level_difficulty = start.level_difficulty

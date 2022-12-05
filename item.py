@@ -1,6 +1,5 @@
 import pygame
 from constants import *
-from sounds import Sounds
 from auxiliar import Auxiliar
 
 class Item:

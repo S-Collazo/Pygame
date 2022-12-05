@@ -2,7 +2,6 @@ import pygame
 import random
 from item import *
 from constants import *
-from sounds import Sounds
 from auxiliar import Auxiliar
 
 class Chest:

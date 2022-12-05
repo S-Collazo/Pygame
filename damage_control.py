@@ -1,6 +1,5 @@
 import pygame
 from constants import *
-from sounds import Sounds
 
 class Damage_Control:
     def __init__(self, lista_personajes, lista_enemigos, lista_balas, lista_trampas,sounds):

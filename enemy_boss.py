@@ -2,7 +2,6 @@ import pygame
 from constants import *
 from enemy import Enemy
 from ammo import Ammo
-from sounds import Sounds
 from auxiliar import Auxiliar
 
 class Boss(Enemy):
@@ -39,7 +38,9 @@ class Boss(Enemy):
     def death (self):
         super().death()
         
-    
+    def drop_loot (self,lista_items,item_asset,currency_multiplier):
+        super().drop_loot(lista_items,item_asset,currency_multiplier)
+        
     def update(self, delta_ms, lista_plataformas, lista_oponente, lista_balas, lista_items, item_asset, lista_enemigos, spawner):
         super().update(delta_ms, lista_plataformas, lista_items,item_asset)
         self.events(delta_ms,lista_oponente,lista_balas, lista_enemigos, spawner)

@@ -15,7 +15,6 @@ from loot import *
 from door import Door
 from damage_control import *
 from ui_screen_info import *
-from sounds import Sounds
 from auxiliar import Auxiliar
 
 class Level:
@@ -187,9 +186,11 @@ class Level:
         for enemy in self.lista_enemigos:
             if not (enemy.is_alive):
                 self.lista_enemigos.remove(enemy)
-                enemy.drop_loot(self.lista_items,self.item_list)
                 if (self.boss_room and enemy.asset_name == self.boss_name):
+                    enemy.drop_loot(self.lista_items,self.item_list,5)
                     self.lista_enemigos.clear()
+                else:
+                    enemy.drop_loot(self.lista_items,self.item_list)
                 break
             else:
                 if (self.boss_room and enemy.asset_name == self.boss_name):
