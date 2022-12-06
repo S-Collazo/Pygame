@@ -1,7 +1,4 @@
 import pygame
-import sys
-import re
-import random
 from pygame.locals import *
 from constants import *
 from ui_form import Form
