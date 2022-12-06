@@ -1,9 +1,9 @@
 import sqlite3
 
 class Database:
-    def add_highscore (id_num,nombre,puntuacion):
+    def add_highscore (nombre,puntuacion):
         with sqlite3.connect("db_highscore.db") as database:
-            database.execute("insert into highscore (ID,nombre,puntuacion) values (?,?,?)", (id_num,nombre,puntuacion))
+            database.execute("INSERT into highscore (nombre,puntuacion) values (?,?)", (nombre,puntuacion))
             database.commit()
             
     def update_highscore(nombre,score):

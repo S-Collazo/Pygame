@@ -240,13 +240,15 @@ class Entity:
             if(self.frame < len(self.animation) - 1):
                 self.frame += 1
             else:
+                if(self.is_block):
+                    self.frame = -1
+                else:
+                    self.frame = 0
                 if (self.is_dying):
                     self.is_dying = False
                     self.is_alive = False
-                else:
-                    self.frame = 0
-                    if (self.is_hurt):
-                        self.is_hurt = False
+                elif (self.is_hurt):
+                    self.is_hurt = False
                                                       
     def update(self,delta_ms,lista_plataformas):
             self.do_animation(delta_ms)

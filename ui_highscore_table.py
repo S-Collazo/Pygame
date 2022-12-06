@@ -47,6 +47,18 @@ class HighscoreTable(Form):
         self.exit = True
 
     def update(self, lista_eventos):
+        self.highscore_list = Database.display_all_highscore()
+        self.highscore_name_1._text = self.highscore_list[0][1]
+        self.highscore_score_1._text = str(self.highscore_list[0][2])
+        self.highscore_name_2._text = self.highscore_list[1][1]
+        self.highscore_score_2._text = str(self.highscore_list[1][2])
+        self.highscore_name_3._text = self.highscore_list[2][1]
+        self.highscore_score_3._text = str(self.highscore_list[2][2])
+        self.highscore_name_4._text = self.highscore_list[3][1]
+        self.highscore_score_4._text = str(self.highscore_list[3][2])
+        self.highscore_name_5._text = self.highscore_list[4][1]
+        self.highscore_score_5._text = str(self.highscore_list[4][2])
+        
         for aux_widget in self.lista_widget:
             aux_widget.update(lista_eventos)
 

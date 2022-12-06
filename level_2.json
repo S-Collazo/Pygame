@@ -2,7 +2,7 @@
     "background_image": "\\images\\locations\\set_bg_06\\creepy_forest_001.png",
     "soundtrack": "\\sounds\\soundtrack\\ost_002.mp3",
     "gravity": 10,
-    "frame_rate_ms": 120,
+    "frame_rate_ms": 160,
     "move_rate_ms": 40,
     "boss_room": 0,
     "player": {

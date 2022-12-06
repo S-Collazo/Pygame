@@ -1,4 +1,5 @@
 import pygame
+import os
 from ui_start import Start
 from ui_pause import Pause
 from ui_death import Death
@@ -50,11 +51,13 @@ while True:
             if (game_state == GAME_CONTINUE):
                 level_number += 1
             game_state = GAME_RUNNING
+           
+        level_check = os.path.isfile("level_{0}.json".format(level_number))
             
-        try:
+        if (level_check):
             level = Level(screen,level_number,level_difficulty,sounds)
             win = Win(screen,level.lista_personajes[0],level.time_final,sounds,level.has_spawner,level.boss_room)
-        except:
+        else:
             game_state = GAME_END
             
         highscore = Highscore(screen,sounds)

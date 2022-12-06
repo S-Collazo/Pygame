@@ -36,8 +36,7 @@ class HighscoreRegister(Form):
                 if (higher_score):
                     Database.update_highscore(self.nombre,self.score)
             else:
-                id_num = random.randrange(1000,9999)
-                Database.add_highscore(id_num,self.nombre,self.score)
+                Database.add_highscore(self.nombre,self.score)
                 
             self.set_active("highscore_table")
         else:
@@ -55,7 +54,7 @@ class HighscoreRegister(Form):
                     self.name_entry._text = ""
                     self.set_active("highscore_table")
                 elif event.key == pygame.K_RETURN:
-                    self.register_name()
+                    self.register_name()   
                     
         for aux_widget in self.lista_widget:
             aux_widget.update(lista_eventos)
