@@ -231,5 +231,5 @@ class Level:
                                            
         if(DEBUG):
             Auxiliar.drawGrid(self.screen,100)
-                                
+       
         return self.game_state

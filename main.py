@@ -21,6 +21,7 @@ level_difficulty = 0
 score_list = [0,0,0]
 
 screen = pygame.display.set_mode((ANCHO_VENTANA,ALTO_VENTANA),flags, 16)
+print(type(screen))
 
 pygame.init()
 
