@@ -9,7 +9,7 @@ class Ammo:
     
     def __init__(self,asset:dict,lista_balas:list,x:int,y:int,frame_rate_ms:int,move_rate_ms:int,direction:int,p_scale:int=1) -> None:
         """
-        Crea una bala nueva en base a los parámetros pasados.
+        Crea una bala nueva en base a los parámetros pasados y la genera en el nivel.
         
         No retorna nada.
         
