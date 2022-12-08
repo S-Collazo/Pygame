@@ -1,9 +1,7 @@
 import sqlite3
 
 class Database:
-    """
-    Base de datos para la tabla de puntuaciones.
-    """
+    """Base de datos para la tabla de puntuaciones."""
     
     def add_highscore (nombre:str,score:int) -> None:
         """
@@ -102,7 +100,7 @@ class Database:
                 else:
                     return False
             
-    def display_highscore (nombre:str):
+    def display_highscore (nombre:str) -> tuple:
         """
         Busca en la base de datos la entrada correspondiente al nombre recibido.
         
@@ -139,6 +137,3 @@ class Database:
             for player in display:
                 highscore_list.append(player)
             return highscore_list
-        
-        
-print(type(Database.display_highscore("AAAA")))

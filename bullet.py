@@ -3,9 +3,7 @@ from constants import *
 from auxiliar import Auxiliar
 
 class Bullet:
-    """
-    Proyectiles disparados por los personajes del juego.
-    """
+    """Proyectiles disparados por los personajes del juego."""
     
     def __init__ (self,asset:dict,x:int,y:int,move_rate_ms:int,frame_rate_ms:int,move:int=100,direction_inicial:int=DIRECTION_R,p_scale:int=1,interval_bullet:int=FPS*2,distance:int=ANCHO_VENTANA) -> None:
         """
@@ -22,7 +20,7 @@ class Bullet:
         x : int
             coordenada X inicial de la bala
         y : int
-            coordenada y inicial de la bala   
+            coordenada Y inicial de la bala   
         move_rate_ms : int
             velocidad de desplazamiento
         frame_rate_ms : int

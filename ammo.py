@@ -3,9 +3,7 @@ from constants import *
 from bullet import Bullet
 
 class Ammo:
-    """
-    Generador y controlador de la balas activas en el juego.
-    """
+    """Generador y controlador de la balas activas en el juego."""
     
     def __init__(self,asset:dict,lista_balas:list,x:int,y:int,frame_rate_ms:int,move_rate_ms:int,direction:int,p_scale:int=1) -> None:
         """

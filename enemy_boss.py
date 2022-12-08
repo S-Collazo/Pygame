@@ -5,6 +5,8 @@ from ammo import Ammo
 from auxiliar import Auxiliar
 
 class Boss(Enemy):
+    """Enemigo jefe."""
+    
     def __init__(self, asset, name, x, y, gravity, frame_rate_ms, move_rate_ms,difficulty,sounds,p_scale=1.2):
         self.asset = asset
         self.difficulty = difficulty

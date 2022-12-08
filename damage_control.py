@@ -2,9 +2,7 @@ import pygame
 from constants import *
 
 class Damage_Control:
-    """
-    Controlador de daños entre elementos del nivel.
-    """
+    """Controlador de daños entre elementos del nivel."""
     
     def __init__(self, lista_personajes:list, lista_enemigos:list, lista_balas:list, lista_trampas:list,sounds) -> None:
         """
