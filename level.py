@@ -59,7 +59,7 @@ class Level:
         self.lista_enemigos = []
         if (self.has_spawner or self.boss_room):
             if (self.has_spawner):
-                self.spawner = Spawner(difficulty=self.difficulty,enemy=enemy_info,enemy_list=self.enemy_list,gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,sounds=self.sounds) 
+                self.spawner = Spawner(difficulty=self.difficulty,enemy=enemy_info,lista_enemigos=self.enemy_list,gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,sounds=self.sounds) 
             if(self.boss_room):
                 self.boss_name = boss_info["boss_name"]
                 self.boss_list = Auxiliar.readJson(boss_info["boss_list"])
