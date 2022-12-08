@@ -35,7 +35,7 @@ class Damage_Control:
         Controla las colisiones entre distintos elementos de dos listas para determinar si uno sufre daños. 
         También reproduce los sonidos de ataque/ bloqueo.
         
-        No funciona si el elemento atacado no tiene el estado "vivo" o si el elemento atacante no está realizando la acción "atacar"/"disparar".
+        No aplica si el elemento atacado no tiene el estado "vivo" o si el elemento atacante no está realizando la acción "atacar"/"disparar".
         
         No retorna nada.
         

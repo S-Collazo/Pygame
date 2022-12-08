@@ -6,10 +6,11 @@ from ammo import Ammo
 class Entity:
     """Base de todos los personajes (jugadores y enemigos) del juego."""
     
-    def __init__ (self,asset:dict,x:int,y:int,gravity:int,frame_rate_ms:int,move_rate_ms:int,sounds,direction_inicial:int=DIRECTION_R,p_scale:int=1,interval_time:int=FPS) -> None:
+    def __init__ (self,asset:dict,x:int,y:int,gravity:int,frame_rate_ms:int,move_rate_ms:int,sounds,direction_inicial:int=DIRECTION_R,p_scale:float=1,interval_time:int=FPS) -> None:
         """
         Extrae información del diccionario para determinar nombre del personaje, las distintas animaciones que podrá realizar,
         puntos de vida y daño, intervalo de espera para ciertas acciones, capacidad de movimiento y sonidos.
+        
         También genera un rectángulo con las mismas dimensiones que el sprite y dentro de este tres rectángulos menores:
         rect_collition para las colisiones que causan daño al personaje, ground_collition para las colisiones con el suelo/plataformas
         y body_collition para la acciones de atacar a otros personajes y bloquear sus ataques.
@@ -33,7 +34,7 @@ class Entity:
             objeto controlador de sonidos
         direction_inicial : int
             dirección del personaje al inicio del nivel. Por defecto, derecha
-        p_scale : int
+        p_scale : float
             escala del sprite. Por defecto, 1
         intervale_time : int
             tiempo base para los tiempos de espera de ciertas acciones. Por defecto, los FPS del juego
@@ -136,7 +137,7 @@ class Entity:
         """
         Inicia la animación de caminar (loop) y permite al personaje desplazarse en la dirección indicada.
         
-        No funciona si el personaje está saltando o cayendo. 
+        No aplica si el personaje está saltando o cayendo. 
         
         No retorna nada.
         
@@ -160,7 +161,7 @@ class Entity:
         """
         Si on_off es True, inicia la animación de salto y permite al personaje desplazarse en la dirección indicada.
         
-        No funciona si on_off es False o el personaje ya está saltando o cayendo. 
+        No aplica si on_off es False o el personaje ya está saltando o cayendo. 
         
         No retorna nada.
         
@@ -202,9 +203,9 @@ class Entity:
       
     def attack(self,on_off:bool = True) -> None:
         """
-        Si on_off es True, inicia la animación de ataque en la dirección indicada y cambia el estado de acción a 'atacar'.
+        Si on_off es True, inicia la animación de ataque en la dirección actual y cambia el estado de acción a 'atacar'.
         
-        No funciona si on_off es False o el personaje está saltando o cayendo. 
+        No aplica si on_off es False o el personaje está saltando o cayendo. 
         
         No retorna nada.
         
@@ -224,9 +225,9 @@ class Entity:
             
     def block(self,on_off:bool = True) -> None:
         """
-        Si on_off es True, inicia la animación de bloqueo (mantenida) en la dirección indicada y cambia el estado de acción a 'bloquear'.
+        Si on_off es True, inicia la animación de bloqueo (mantenida) en la dirección actual y cambia el estado de acción a 'bloquear'.
         
-        No funciona si on_off es False o el personaje está saltando o cayendo. 
+        No aplica si on_off es False o el personaje está saltando o cayendo. 
         
         No retorna nada.
         
@@ -246,12 +247,12 @@ class Entity:
             
     def shoot(self,lista_balas:list,on_off:bool = True) -> None:
         """
-        Si on_off es True, inicia la animación de disparo en la dirección indicada, cambia el estado de acción a 'disparar'
+        Si on_off es True, inicia la animación de disparo en la dirección actual, cambia el estado de acción a 'disparar'
         y reproduce el sonido de disparo asignado.
         
         También crea un objeto Bullet en base a los atributos del personaje.
         
-        No funciona si on_off es False o el personaje ya está disparando. 
+        No aplica si on_off es False o el personaje ya está disparando. 
         
         No retorna nada.
         
@@ -279,7 +280,7 @@ class Entity:
      
     def hurt (self) -> None:
         """
-        Inicia la animación de personaje herido en la dirección indicada.
+        Inicia la animación de personaje herido en la dirección actual.
         
         No retorna nada.
         """
@@ -294,7 +295,7 @@ class Entity:
             
     def death (self) -> None:
         """
-        Inicia la animación de muerte en la dirección indicada y reproduce el sonido de muerte asignado.
+        Inicia la animación de muerte en la dirección actual y reproduce el sonido de muerte asignado.
         
         No retorna nada.
         """
@@ -336,7 +337,7 @@ class Entity:
         """
         Mueve al personaje en el eje X en base al valor recibido. También ajusta la posición de los rectángulos.
         
-        No funciona si al desplazarse el personaje saldría de los límites de la pantalla.
+        No aplica si al desplazarse el personaje saldría de los límites de la pantalla.
         
         No retorna nada.
         
@@ -382,7 +383,7 @@ class Entity:
         en base a la gravedad del nivel. Una vez que toca el suelo, desactiva el estado 'caída' y, si estaba saltando, la animación de
         salto.
         
-        No funciona si el tiempo pasado desde la última ejecución del método es inferior al valor de velocidad de desplazamiento.
+        No aplica si el tiempo pasado desde la última ejecución del método es inferior al valor de velocidad de desplazamiento.
         
         No retorna nada.
         
@@ -423,7 +424,7 @@ class Entity:
         
         Si es la animación de personaje herido, desactiva el estados de personaje 'herido'.
         
-        No funciona si el tiempo pasado desde la última ejecución del método es inferior al valor de velocidad de animación.
+        No aplica si el tiempo pasado desde la última ejecución del método es inferior al valor de velocidad de animación.
         
         No retorna nada.
         

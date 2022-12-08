@@ -5,7 +5,7 @@ from auxiliar import Auxiliar
 class Door:
     """Transportador a la pantalla de victoria. Finaliza el nivel."""
     
-    def __init__ (self,asset:dict,x:int,y:int,w:int,h:int,p_scale:int=1) -> None:
+    def __init__ (self,asset:dict,x:int,y:int,w:int,h:int,p_scale:float=1) -> None:
         """
         Extrae información del diccionario para determinar sprite de la puerta (dos versiones: abierta y cerrada).
         Inicializa la puerta cerrada.
@@ -25,7 +25,7 @@ class Door:
             ancho del sprite
         h : int
             alto del sprite
-        p_scale : int
+        p_scale : float
             escala del sprite. Por defecto, 1
         """
         
@@ -81,9 +81,11 @@ class Door:
         if (self.is_open):
             self.image = self.door_open 
     
-    def draw (self,screen):
+    def draw (self,screen) -> None:
         """
         Renderiza y actualiza el sprite de la puerta en base a su versión activa.
+        
+        No retorna nada.
         
         ----------
         screen

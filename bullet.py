@@ -5,7 +5,7 @@ from auxiliar import Auxiliar
 class Bullet:
     """Proyectiles disparados por los personajes del juego."""
     
-    def __init__ (self,asset:dict,x:int,y:int,move_rate_ms:int,frame_rate_ms:int,move:int=100,direction_inicial:int=DIRECTION_R,p_scale:int=1,interval_bullet:int=FPS*2,distance:int=ANCHO_VENTANA) -> None:
+    def __init__ (self,asset:dict,x:int,y:int,move_rate_ms:int,frame_rate_ms:int,move:int=100,direction_inicial:int=DIRECTION_R,p_scale:float=1,interval_bullet:int=FPS*2,distance:int=ANCHO_VENTANA) -> None:
         """
         Extrae información del diccionario para determinar nombre del personaje que dispara, nombre de la bala, sprite a animar, 
         puntos de ataque y sonido de impacto. Usa los parámetros pasados para determinar distancia y velocidad de movimiento.
@@ -29,7 +29,7 @@ class Bullet:
             distancia a recorrer por cada frame. Por defecto, 100
         direction_inicial : int
             dirección en la que se dispara la bala. Por defecto, derecha
-        p_scale : int
+        p_scale : float
             escala del sprite. Por defecto, 1
         interval_bullet : int
             intervalo de tiempo para actualizar la posición de la bala. Por defecto, el doble de los FPS del nivel
@@ -127,7 +127,7 @@ class Bullet:
         """
         Ajusta la posición de la bala en el eje X en base a los valores actuales de movimiento.
         
-        No funciona si el tiempo pasado desde la última ejecución del método es inferior al valor de velocidad de desplazamiento.
+        No aplica si el tiempo pasado desde la última ejecución del método es inferior al valor de velocidad de desplazamiento.
         Si el movimiento de la bala la sacaría de los límites de la pantalla, la desactiva.
         
         No retorna nada.
@@ -152,7 +152,7 @@ class Bullet:
         """
         Avanza un frame de la animación de la bala hasta llegar al último frame. Si pasa el último frame, vuelve al primero.
         
-        No funciona si el tiempo pasado desde la última ejecución del método es inferior al valor de velocidad de animación.
+        No aplica si el tiempo pasado desde la última ejecución del método es inferior al valor de velocidad de animación.
         
         No retorna nada.
         
