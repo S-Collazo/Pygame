@@ -408,6 +408,7 @@ class Entity:
             if not(self.is_on_platform(lista_plataformas)):
                 if(self.move_y == 0):
                     self.is_fall = True
+                    self.move_x = 0
                     self.add_y(self.gravity)          
             else:
                 if(self.is_jump):
