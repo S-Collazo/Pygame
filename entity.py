@@ -466,9 +466,11 @@ class Entity:
         self.do_animation(delta_ms)
         self.do_movement(delta_ms,lista_plataformas)
     
-    def draw (self,screen):
+    def draw (self,screen) -> None:
         """
         Renderiza y actualiza el sprite del personaje en base a la animación y frames activos.
+        
+        No retorna nada.
         
         ----------
         screen
