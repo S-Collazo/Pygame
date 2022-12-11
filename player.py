@@ -69,61 +69,105 @@ class Player(Entity):
                 
     def events(self,delta_ms:int,keys,lista_eventos:list,lista_balas:list) -> None:
         """
-        Controla los movimiento y acciones del personaje.
+        Ejecuta los métodos de control de movimientos y control de acciones.
         
-        Realiza las distintas acciones (con sus correspondientes animaciones) en 
-        base a las teclas presionadas.
-        
-        No aplica is el personaje se encuentra en el estado "muriendo" o "herido".
+        No aplica is el personaje se encuentra en el estado "muriendo" o "herido". 
+        En el caso de las acciones, tampoco aplica si hay una animación de ataque 
+        en progreso.
         
         No retorna nada.
         
         ----------
         delta_ms : int
             valor de tiempo
-        lista_eventos : list
-            lista de distintos tipos de eventos registrados por Pygame
         keys
             teclas presionadas por el jugador
+        lista_eventos : list
+            lista de distintos tipos de eventos registrados por Pygame
+        lista_balas : list
+            lista de las balas activas en el nivel
+        """
+        
+        if not (self.is_dying or self.is_hurt):
+            self.movement_events(delta_ms,keys,lista_eventos)
+            self.combat_events(delta_ms,keys,lista_eventos,lista_balas)
+                                
+    def movement_events(self,delta_ms:int,keys,lista_eventos:list) -> None:
+        """
+        Controla los movimiento del personaje en base a las teclas presionadas.
+        
+        No retorna nada.
+        
+        ----------
+        delta_ms : int
+            valor de tiempo
+        keys
+            teclas presionadas por el jugador
+        lista_eventos : list
+            lista de distintos tipos de eventos registrados por Pygame
+        """
+        
+        self.tiempo_transcurrido += delta_ms * 2
+        
+        if(keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
+            super().walk(DIRECTION_L)
+        if(not keys[pygame.K_LEFT] and keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
+            super().walk(DIRECTION_R)
+        if(not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
+            super().stay()
+        if(keys[pygame.K_LEFT] and keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
+            super().stay()
+      
+        for event in lista_eventos:
+            if (event.type == pygame.KEYDOWN):
+                if(keys[pygame.K_SPACE] or keys[pygame.K_LEFT] and keys[pygame.K_SPACE] and keys[pygame.K_RIGHT]):
+                    if((self.tiempo_transcurrido - self.tiempo_last_jump) > (self.interval_time_jump)):
+                        super().jump(True)
+                        self.tiempo_last_jump = self.tiempo_transcurrido
+                        
+    def combat_events(self,delta_ms:int,keys,lista_eventos:list,lista_balas:list) -> None:
+        """
+        Controla las distintas acciones del personaje (con sus correspondientes animaciones)
+        en base a las teclas presionadas.
+        
+        También comprueba si el personaje cuenta con una bala activa en el nivel. No permite 
+        disparar si es el caso.
+        
+        No retorna nada.
+        
+        ----------
+        delta_ms : int
+            valor de tiempo
+        keys
+            teclas presionadas por el jugador
+        lista_eventos : list
+            lista de distintos tipos de eventos registrados por Pygame
         lista_balas : list
             lista de las balas activas en el nivel
         """
         
         self.tiempo_transcurrido += delta_ms
+        
         self.is_shooting = Ammo.is_shooting(lista_balas=lista_balas,asset=self.asset)
         
-        if not (self.is_dying or self.is_hurt):
-            if(keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
-                super().walk(DIRECTION_L)
-            if(not keys[pygame.K_LEFT] and keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
-                super().walk(DIRECTION_R)
-            if(not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
-                super().stay()
-            if(keys[pygame.K_LEFT] and keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
-                super().stay()
-            if not (keys[pygame.K_d]):
-                self.block(False)              
-            if(keys[pygame.K_d] and not (keys[pygame.K_s] or keys[pygame.K_a])):
-                if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
-                    self.block()
-                    self.tiempo_last_block = self.tiempo_transcurrido
+        if(keys[pygame.K_d] and not (keys[pygame.K_s] or keys[pygame.K_a])):
+            if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
+                self.block()
+                self.tiempo_last_block = self.tiempo_transcurrido
+        if not (keys[pygame.K_d]):
+            self.block(False)
+    
+        self.attack(False)
+        self.shoot(lista_balas,False)
         
-            self.attack(False)
-            self.shoot(lista_balas,False)
-            
-            for event in lista_eventos:
-                if (event.type == pygame.KEYDOWN):
-                    if(keys[pygame.K_SPACE] or keys[pygame.K_LEFT] and keys[pygame.K_SPACE] and keys[pygame.K_RIGHT]):
-                        if((self.tiempo_transcurrido - self.tiempo_last_jump) > (self.interval_time_jump)):
-                            super().jump(True)
-                            self.tiempo_last_jump = self.tiempo_transcurrido
-                            
-                    if(keys[pygame.K_s] and not keys[pygame.K_a] and not keys[pygame.K_d] and self.is_shooting == False):
-                        if((self.tiempo_transcurrido - self.tiempo_last_shoot) > (self.interval_time_shoot)):
-                            self.shoot(lista_balas)
-                            self.tiempo_last_shoot = self.tiempo_transcurrido
+        for event in lista_eventos:
+            if (event.type == pygame.KEYDOWN):        
+                if(keys[pygame.K_s] and not keys[pygame.K_a] and not keys[pygame.K_d] and self.is_shooting == False):
+                    if((self.tiempo_transcurrido - self.tiempo_last_shoot) > (self.interval_time_shoot)):
+                        self.shoot(lista_balas)
+                        self.tiempo_last_shoot = self.tiempo_transcurrido
 
-                    if(keys[pygame.K_a] and not (keys[pygame.K_s] or keys[pygame.K_d])):
-                        if((self.tiempo_transcurrido - self.tiempo_last_attack) > (self.interval_time_attack)):
-                            self.attack()
-                            self.tiempo_last_attack = self.tiempo_transcurrido
+                if(keys[pygame.K_a] and not (keys[pygame.K_s] or keys[pygame.K_d])):
+                    if((self.tiempo_transcurrido - self.tiempo_last_attack) > (self.interval_time_attack)):
+                        self.attack()
+                        self.tiempo_last_attack = self.tiempo_transcurrido

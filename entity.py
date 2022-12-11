@@ -207,7 +207,7 @@ class Entity:
         self.is_attack = on_off
         if(on_off == True and self.is_jump == False and self.is_fall == False):
             if(self.animation != self.attack_r and self.animation != self.attack_l):
-                self.frame = 0
+                #self.frame = 0
                 if(self.direction == DIRECTION_R):
                     self.animation = self.attack_r
                 else:
@@ -228,12 +228,11 @@ class Entity:
         self.is_block = on_off
         if(on_off == True and self.is_jump == False and self.is_fall == False):
             if(self.animation != self.block_r and self.animation != self.block_l):
+                self.frame = 0
                 if(self.direction == DIRECTION_R):
                     self.animation = self.block_r
                 else:
                     self.animation = self.block_l
-        else:
-            self.frame = 0
             
     def shoot(self,lista_balas:list,on_off:bool = True) -> None:
         """
@@ -409,7 +408,7 @@ class Entity:
         
         Si es la animación de bloqueo, permanece en el último frame. De otra forma, vuelve al primer frame.
         
-        Si es la animación de muerte, desactiva los estados de personaje 'muriendo' y 'vivo'.
+        Si es la animación de muerte, desactiva el estado 'vivo'.
         
         Si es la animación de personaje herido, desactiva el estados de personaje 'herido'.
         
@@ -421,8 +420,10 @@ class Entity:
         delta_ms : int
             valor de tiempo
         """
-        
-        self.tiempo_transcurrido_anim += delta_ms
+        if (self.is_hurt):
+            self.tiempo_transcurrido_anim += delta_ms * 10
+        else:
+            self.tiempo_transcurrido_anim += delta_ms
         
         if(self.tiempo_transcurrido_anim >= self.frame_rate_ms):
             self.tiempo_transcurrido_anim = 0
@@ -435,7 +436,6 @@ class Entity:
                 else:
                     self.frame = 0
                     if (self.is_dying):
-                        self.is_dying = False
                         self.is_alive = False
                     elif (self.is_hurt):
                         self.is_hurt = False

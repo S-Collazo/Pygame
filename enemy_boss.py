@@ -134,7 +134,7 @@ class Boss(Enemy):
         """
         
         super().update(delta_ms, lista_plataformas, lista_items,item_asset)
-        if(self.is_alive):
+        if(self.is_alive and not self.is_dying):
             self.events(delta_ms,lista_oponente,lista_balas, lista_enemigos, spawner)
 
     def draw(self, screen):

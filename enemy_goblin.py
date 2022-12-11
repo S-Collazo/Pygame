@@ -58,7 +58,7 @@ class Goblin_Standard (Enemy):
         """
         
         super().update(delta_ms, lista_plataformas, lista_items,item_asset)
-        if(self.is_alive):
+        if(self.is_alive and not self.is_dying):
             self.events(delta_ms,lista_oponente)
 
     def draw(self,screen) -> None:
@@ -187,7 +187,7 @@ class Goblin_Grunt (Enemy):
         """
         
         super().update(delta_ms,lista_plataformas,lista_items,item_asset)
-        if(self.is_alive):
+        if(self.is_alive and not self.is_dying):
             self.events(delta_ms,lista_oponente,lista_balas)
         
     def draw (self,screen) -> None:
@@ -309,7 +309,7 @@ class Goblin_Shaman (Enemy):
         Ejecuta el método update heredado, actualizando los atributos de tiempo pasado, plataformas e items activos 
         y objeto a generar cuando muera el personaje.
         
-        También ejecuta el método de control de acciones, a menos que el personaje ya no este vivo.
+        También ejecuta el método de control de acciones, a menos que el personaje este herido o ya no este vivo.
         
         No retorna nada.
         
@@ -329,7 +329,7 @@ class Goblin_Shaman (Enemy):
         """
         
         super().update(delta_ms,lista_plataformas,lista_items,item_asset)
-        if(self.is_alive):
+        if(self.is_alive and not self.is_dying):
             self.events(delta_ms,lista_oponente,lista_balas)
         
     def draw (self,screen) -> None:
