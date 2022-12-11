@@ -18,9 +18,30 @@ from ui_screen_info import *
 from auxiliar import Auxiliar
 
 class Level:
-    def __init__(self,screen,level,difficulty,sounds):        
+    """Controlador de elementos del nivel."""
+    
+    def __init__(self,screen,level_number:int,difficulty:int,sounds) -> None:
+        """
+        Extrae información del archivo json indicado para determinar los elementos
+        y características del nivel.
+        
+        Genera los distintos elementos (plataformas, jugadores, enemigos, objetos, etc.).
+        
+        No retorna nada.
+        
+        ----------
+        screen
+            superficie en la que se renderizan los sprites
+        level_number : int
+            identifica el nivel a cargar
+        difficulty : int
+            dificultad del nivel. Modifica ciertos valores
+        sounds
+            objeto controlador de sonidos
+        """
+            
         self.screen = screen
-        self.level_number = level
+        self.level_number = level_number
         self.difficulty = difficulty
                            
         level_info = Auxiliar.readJson("level_{0}.json".format(self.level_number))
@@ -132,7 +153,22 @@ class Level:
         
         self.level_clear = False
                          
-    def run_level (self,delta_ms,lista_eventos,keys):                        
+    def run_level (self,delta_ms:int,lista_eventos:list,keys) -> int:
+        """
+        Actualiza los distintos elementos del nivel y elimina ciertos 
+        elementos si se cumplen las condiciones indicada.
+        
+        Retorna el estado actual del juego.
+        
+        ----------
+        delta_ms : int
+            valor de tiempo
+        lista_eventos : list
+            lista de distintos tipos de eventos registrados por Pygame
+        keys
+            teclas presionadas por el jugador
+        """
+                              
         self.game_state = GAME_RUNNING
         self.screen_info.active = True
         if(self.boss_room):

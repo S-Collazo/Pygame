@@ -67,14 +67,12 @@ class Spawner:
         
         if (self.spawned_enemies > 0):
             if (self.time_passed - self.time_last_spawn) > (self.interval_time_spawn):
-                # Elige al azar valores de tipo de enemigo y coordenadas a partir de listas:
                 enemy_type_value = random.randrange(self.enemy_info["enemy_type_number"][self.difficulty])
                 enemy_coordinates_value = random.randrange(len(self.enemy_info["enemy_starter_position"]))
-                # Tipo y coordenadas de enemigo a los que aplicar los anteriores valores:
+
                 enemy_type = Auxiliar.splitIntoString(self.enemy_info["enemy_type"][self.difficulty],"/")
                 enemy_coordinates = Auxiliar.splitIntoInt(self.enemy_info["enemy_starter_position"][enemy_coordinates_value],",")
                 
-                # Genera un enemigo del tipo correspondiente al valor obtenido:
                 if (enemy_type[enemy_type_value] == "Standard"):
                     self.lista_enemigos.append(Goblin_Standard(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=self.lv_gravity,frame_rate_ms=self.lv_frame_rate_ms,move_rate_ms=self.lv_move_rate_ms,sounds=self.sounds,p_scale=self.enemy_info["p_scale"]))  
                 elif (enemy_type[enemy_type_value] == "Grunt"):
@@ -106,14 +104,12 @@ class Spawner:
         
         if (self.spawned_enemies > 0):
             for n in range(self.ammount):
-                 # Elige al azar valores de tipo de enemigo y coordenadas a partir de listas:
                 enemy_type_value = random.randrange(self.enemy_info["enemy_type_number"][self.difficulty])
                 enemy_coordinates_value = random.randrange(len(self.enemy_info["enemy_starter_position"]))
-                # Tipo y coordenadas de enemigo a los que aplicar los anteriores valores:
+
                 enemy_type = Auxiliar.splitIntoString(self.enemy_info["enemy_type"][self.difficulty],"/")
                 enemy_coordinates = Auxiliar.splitIntoInt(self.enemy_info["enemy_starter_position"][enemy_coordinates_value],",")
                 
-                # Genera un enemigo del tipo correspondiente al valor obtenido:
                 if (enemy_type[enemy_type_value] == "Standard"):
                     self.lista_enemigos.append(Goblin_Standard(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=self.lv_gravity,frame_rate_ms=self.lv_frame_rate_ms,move_rate_ms=self.lv_move_rate_ms,sounds=self.sounds,p_scale=self.enemy_info["p_scale"]))  
                 elif (enemy_type[enemy_type_value] == "Grunt"):

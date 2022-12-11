@@ -43,14 +43,12 @@ class Bullet:
         self.bullet_asset = asset["bullet"]
         self.bullet_asset_name = self.bullet_asset["name"]
         
-        # Determina dirección de la bala y animación correspondiente:
         self.direction = direction_inicial
         if(self.direction == DIRECTION_L):
             self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + self.bullet_asset["path"] + "_{:03d}.png",self.bullet_asset["quantity"],flip=False,step=0,scale=self.p_scale,w=100,h=100)
         else:
             self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + self.bullet_asset["path"] + "_{:03d}.png",self.bullet_asset["quantity"],flip=True,step=0,scale=self.p_scale,w=100,h=100)
         
-        # Variables de animación y rectángulo del sprite de la bala:
         self.frame = 0
         self.animation = self.image_list
         self.image = self.animation[self.frame]
@@ -58,17 +56,14 @@ class Bullet:
         self.rect.x = x
         self.rect.y = y
         
-        # Puntos de ataque, sonido de impacto y estados de la bala (disparada y atacando):
         self.attack_power = self.bullet_asset["attack_power"]
         self.attack_sound = self.bullet_asset["sound_effect"]
         self.is_shoot = True
         self.is_attack = False
         
-        # Estado de colisiones de la bala y rectángulo de colisión:
         self.collition_enabled = True
         self.rect_body_collition = pygame.Rect(self.rect)
         
-        # Variavles de animaciones y desplazamiento:
         self.delta_x = move
         self.frame_rate_ms = frame_rate_ms
         self.move_rate_ms = move_rate_ms * FPS

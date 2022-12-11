@@ -33,7 +33,6 @@ class Ammo:
         self.lista_balas = lista_balas
         self.p_scale = p_scale * GLOBAL_SCALE
         
-        # Ajusta la posición inicial de la bala para que se genere en la zona delantera del personaje:
         if(direction == DIRECTION_R):
             self.pos_x = x + (100 * GLOBAL_SCALE)
         else:
@@ -41,7 +40,6 @@ class Ammo:
         self.pos_y = y + (50 * GLOBAL_SCALE)
         self.direction = direction
         
-        #Crea la bala y la agrega a la lista de balas activas:
         self.lista_balas.append(Bullet(asset=asset,x=self.pos_x,y=self.pos_y,frame_rate_ms=frame_rate_ms,move_rate_ms=move_rate_ms,move=50,direction_inicial=self.direction,p_scale=self.p_scale,interval_bullet=FPS*2,distance=ANCHO_VENTANA))
         
     def is_shooting(lista_balas:list,asset) -> bool:

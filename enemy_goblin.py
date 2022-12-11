@@ -79,7 +79,8 @@ class Goblin_Standard (Enemy):
         Controla los movimiento y acciones del personaje.
         
         Calcula la distancia entre el personaje y el jugador activo y determina qué acciones tomará 
-        en base a esa distancia.
+        en base a esa distancia. En caso de que la distancia sea mayor al número indicado, determina 
+        una zona de patrullaje para el personaje.
         
         No aplica is el personaje se encuentra en el estado "muriendo" o "herido".
         
@@ -94,7 +95,6 @@ class Goblin_Standard (Enemy):
         
         self.tiempo_transcurrido += delta_ms
 
-        # Designa la zona que patrullará:
         if(self.x <= ANCHO_VENTANA / 2):
             self.posicion_extremo_a = 5
             self.posicion_extremo_b = ANCHO_VENTANA / 2
@@ -104,29 +104,24 @@ class Goblin_Standard (Enemy):
             
         if not (self.is_dying or self.is_hurt):
             for oponente in lista_oponente:
-                # Distancias entre personaje y jugador en el eje X e Y:
                 self.player_position_x = oponente.rect_body_collition.x
                 self.player_position_y = oponente.rect.y
                 self.distance_difference_x = self.rect_body_collition.x - oponente.rect_body_collition.x
                 self.distance_difference_y = self.rect.y - oponente.rect.y
 
-                # Desactiva animación de ataque (impide repetición infinita):
                 self.attack(False)
 
                 if(abs(self.distance_difference_x) <= 500 and abs(self.distance_difference_y) <= 50):
                     if(abs(self.distance_difference_x) <= 100):
-                        # Si la distancia X es inferior a 100, realiza ataque normal (si está habilitado):
                         if ((self.tiempo_transcurrido - self.tiempo_last_attack) > (self.interval_time_attack)):
                             self.attack()
                             self.tiempo_last_attack = self.tiempo_transcurrido
                     else:
-                        # Si la distancia X es superior a 100 y menor a 500, camina hacia el jugador activo:
                         if(self.distance_difference_x >= 0):
                             super().walk(DIRECTION_L)
                         else:
                             super().walk(DIRECTION_R)
                 else:
-                    # Si la distancia X es superior a 500, se mueve dentro de la zona de patrullaje designada:
                     if(self.rect.x >= self.posicion_extremo_a and self.rect.x <= self.posicion_extremo_b):
                         super().walk(self.direction)
                     else:
@@ -213,7 +208,8 @@ class Goblin_Grunt (Enemy):
         Controla los movimiento y acciones del personaje.
         
         Calcula la distancia entre el personaje y el jugador activo y determina qué acciones tomará 
-        en base a esa distancia.
+        en base a esa distancia. En caso de que la distancia sea mayor al número indicado, determina 
+        una zona de patrullaje para el personaje.
         
         No aplica is el personaje se encuentra en el estado "muriendo" o "herido".
         
@@ -229,8 +225,7 @@ class Goblin_Grunt (Enemy):
         """
         
         self.tiempo_transcurrido += delta_ms
-        
-        # Designa la zona que patrullará:    
+  
         if(self.x <= ANCHO_VENTANA / 2):
             self.posicion_extremo_a = 5
             self.posicion_extremo_b = ANCHO_VENTANA / 2
@@ -240,19 +235,16 @@ class Goblin_Grunt (Enemy):
         
         if not (self.is_dying or self.is_hurt):             
             for oponente in lista_oponente:
-                # Distancias entre personaje y jugador en el eje X e Y:
                 self.player_position_x = oponente.rect_body_collition.x
                 self.player_position_y = oponente.rect.y
                 self.distance_difference_x = self.rect_body_collition.x - oponente.rect_body_collition.x
                 self.distance_difference_y = self.rect.y - oponente.rect.y
                 
-                # Desactiva animación de ataque y bloqueo (impide repetición infinita):
                 self.attack(False)
                 self.block(False)
                 
                 if(abs(self.distance_difference_x) <= 500 and abs(self.distance_difference_y) <= 50):
                     if(abs(self.distance_difference_x) <= 100):
-                        # Si la distancia X es inferior a 100, bloquea en caso de que el oponente ataque o realiza ataque normal (si está habilitado):
                         if(oponente.is_attack and (self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
                             self.block()
                             self.tiempo_last_block = self.tiempo_transcurrido
@@ -261,20 +253,17 @@ class Goblin_Grunt (Enemy):
                                 self.attack()
                                 self.tiempo_last_attack = self.tiempo_transcurrido
                     else:
-                        # Si la distancia X es superior a 100 y menor a 500, camina hacia el jugador activo:
                         if(self.distance_difference_x >= 0):
                             super().walk(DIRECTION_L)
                         else:
                             super().walk(DIRECTION_R)
             
                     for bala in lista_balas:
-                         # Si una bala enemiga está por impactarlo, la bloquea (si está habilitado):
                         if(abs(self.rect.x - bala.rect.x) <= (self.rect.w + 50)):
                             if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
                                 self.block()
                                 self.tiempo_last_block = self.tiempo_transcurrido
-                else:
-                    # Si la distancia X es superior a 500, se mueve dentro de la zona de patrullaje designada:       
+                else:   
                     if(self.rect.x >= self.posicion_extremo_a and self.rect.x <= self.posicion_extremo_b):
                         super().walk(self.direction)
                     else:
@@ -378,18 +367,15 @@ class Goblin_Shaman (Enemy):
         
         self.tiempo_transcurrido += delta_ms
         
-        # Comprueba si hay una bala activa disparada por el personaje:
         self.is_shooting = Ammo.is_shooting(lista_balas=lista_balas,asset=self.asset_type)
         
         if not (self.is_dying or self.is_hurt):                      
             for oponente in lista_oponente:
-                # Distancias entre personaje y jugador en el eje X e Y:
                 self.player_position_x = oponente.rect_body_collition.x
                 self.player_position_y = oponente.rect.y
                 self.distance_difference_x = self.rect_body_collition.x - oponente.rect_body_collition.x
                 self.distance_difference_y = self.rect.y - oponente.rect.y
-                
-                # Cambia la dirección en base a la posición del jugador:
+            
                 if(self.distance_difference_x > 0):
                     self.direction = DIRECTION_L
                     self.animation = self.stay_l
@@ -397,11 +383,9 @@ class Goblin_Shaman (Enemy):
                     self.direction = DIRECTION_R
                     self.animation = self.stay_r
                 
-                # Desactiva animación de disparo (impide repetición infinita):
                 self.shoot(lista_balas,False)
                         
                 if(abs(self.distance_difference_x) <= 500 and abs(self.distance_difference_y) <= 100):
-                    # Si la distancia X es inferior a 500, dispara (si está habilitado):
                     if(self.is_shooting == False and ((self.tiempo_transcurrido - self.tiempo_last_shoot) > self.interval_time_shoot)):
                         self.shoot(lista_balas)
                         self.tiempo_last_shoot = self.tiempo_transcurrido

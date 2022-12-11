@@ -44,7 +44,6 @@ class Entity:
         self.asset = asset
         self.asset_name = asset["name"]
         
-        # Animaciones del personaje:
         self.attack_r = Auxiliar.getSurfaceFromJson(self.asset,"Attack",flip=False,p_scale=self.p_scale)
         self.attack_l = Auxiliar.getSurfaceFromJson(self.asset,"Attack",flip=True,p_scale=self.p_scale)
         self.block_r = Auxiliar.getSurfaceFromJson(self.asset,"Block",flip=False,p_scale=self.p_scale)
@@ -65,7 +64,6 @@ class Entity:
         self.walk_l = Auxiliar.getSurfaceFromJson(self.asset,"Walk",flip=True,p_scale=self.p_scale)    
         self.frame = 0
         
-         # Puntos de vida, puntos de ataque y estados del personaje (vivo, herido, muriendo):
         self.hitpoints_max = self.asset["hitpoints"]
         self.hitpoints = self.asset["hitpoints"]
         self.attack_power = self.asset["attack_power"]
@@ -73,7 +71,6 @@ class Entity:
         self.is_hurt = False
         self.is_dying = False
 
-        # Intervalos de tiempo a esperar para realizar ciertas acciones:
         self.tiempo_transcurrido = 0
         self.tiempo_transcurrido_anim = 0
         self.tiempo_transcurrido_move = 0
@@ -87,11 +84,9 @@ class Entity:
         self.tiempo_last_block = 0
         self.interval_time_block = self.interval_time * self.asset["interval_block"]
         
-        # Velocidad de animaciones y de desplazamiento:
         self.frame_rate_ms = frame_rate_ms 
         self.move_rate_ms = move_rate_ms
         
-        # Variables y estados de movimiento (salto y caída):
         self.direction = direction_inicial
         self.move_x = 0
         self.move_y = 0
@@ -103,29 +98,24 @@ class Entity:
         self.y_start_jump = y
         self.is_jump = False
         self.is_fall = False
-        
-        # Estados de acciones (disparar, atacar, bloquear):
+
         self.is_shoot = False
         self.is_attack = False
         self.is_block = False
         
-        # Variables de animación y rectángulo del sprite del personaje:
         self.animation = self.stay_r
         self.image = self.animation[self.frame]
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
         
-        # Rectángulos menores para calcular colisiones con enemigos/trampas (el primero para recibir daño, el segundo para realizarlo o bloquearlo):
         self.rect_collition = pygame.Rect(x+self.rect.width / 3,y,self.rect.width / 2,self.rect.height)
         self.rect_body_collition = pygame.Rect(x+10,y,self.rect.width/2,self.rect.height)
         
-        # Rectángulo menor para calcular colisiones con el suelo/plataformas:
         self.rect_ground_collition = pygame.Rect(self.rect_collition)
         self.rect_ground_collition.height = GROUND_COLLIDE_H
         self.rect_ground_collition.y = y + self.rect.height - GROUND_COLLIDE_H
         
-        # Variables de sonidos (controlador y sonidos de ciertas naimaciones):
         self.sounds = sounds
         
         self.attack_sound = Auxiliar.getSoundFromJson(self.asset,"Attack")
@@ -274,8 +264,7 @@ class Entity:
                     self.animation = self.shoot_l
                     
                 self.sounds.sound_effect(self.throw_sound)  
-            
-            # Utiliza la clase Ammo para crear el objeto Bullet en el nivel:        
+                  
             Ammo(asset=self.asset,lista_balas=lista_balas,x=self.rect.x,y=self.rect.y,frame_rate_ms=self.frame_rate_ms,move_rate_ms=self.move_rate_ms,direction=self.direction,p_scale=self.p_scale)
      
     def hurt (self) -> None:

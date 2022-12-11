@@ -33,7 +33,10 @@ class Damage_Control:
     def damage(self, lista_atacante:list, lista_atacado:list) -> None:
         """
         Controla las colisiones entre distintos elementos de dos listas para determinar si uno sufre daños. 
-        También reproduce los sonidos de ataque/ bloqueo.
+        También reproduce los sonidos de ataque/bloqueo correspondientes.
+        
+        Cambia los puntos de vida del atacado y sus posible estados en base a ese cambio. También separa al atacante 
+        del atacado.
         
         No aplica si el elemento atacado no tiene el estado "vivo" o si el elemento atacante no está realizando la acción "atacar"/"disparar".
         
@@ -54,7 +57,6 @@ class Damage_Control:
                 if (atacado.is_alive):
                     if not (atacado.is_dying or atacado.is_hurt) and (atacante.is_attack or atacante.is_shoot) and not (atacado.asset_name == atacante.asset_name): 
                         if((atacante.rect_body_collition.colliderect(atacado.rect_collition))):
-                            # Si el atacado está realizando la acción "bloquear", no sufre daños pero se reproduce el sonido correspondiente:
                             if(atacado.is_block):
                                 self.sounds.sound_effect(atacado.block_sound)
                             else:
@@ -64,14 +66,11 @@ class Damage_Control:
                                 if(DEBUG):
                                     print("{0} hit {1}".format(atacante.asset_name,atacado.asset_name))
                                 
-                                # Desplaza al atacado lejos del atacante:
                                 if(atacante.rect.x <= atacado.rect.x):
                                     atacado.add_x(25)
                                 else:
                                     atacado.add_x(-25)    
                                 
-                                # Si el ataque agotaría los puntos de vida del atacado, se activa la animación y estado de muerte.
-                                # Si no, los de herida:
                                 if(atacado.hitpoints - atacante.attack_power <= 0):
                                     atacado.is_dying = True
                                     atacado.death()
