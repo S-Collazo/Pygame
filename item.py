@@ -29,7 +29,7 @@ class Item:
         p_scale : float
             escala del sprite. Por defecto, 1
         used : bool
-            indicado si el objeto fue obtenido por el jugador o no
+            indica si el objeto fue obtenido por el jugador o no
         """
         
         self.p_scale = p_scale * GLOBAL_SCALE

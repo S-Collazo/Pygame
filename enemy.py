@@ -9,7 +9,7 @@ class Enemy(Entity):
     
     def __init__ (self,asset:dict,group:str,name:str,x:int,y:int,gravity:int,frame_rate_ms:int,move_rate_ms:int,sounds,p_scale:float=0.1) -> None:
         """
-        Extrae información del diccionario para generar un personaje (base en clase Entity).
+        Extrae información del diccionario para generar un personaje enemigo (base en clase Entity).
         
         También elige de forma aleatoria la dirección inicial del personaje.
         
@@ -95,7 +95,7 @@ class Enemy(Entity):
                   
         super().update(delta_ms,lista_plataformas)
         
-    def draw (self,screen):
+    def draw (self,screen) -> None:
         """
         Ejecuta el método draw heredado.
         
