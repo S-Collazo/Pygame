@@ -256,6 +256,7 @@ class Level:
             self.door_passed = self.door.next_level(self.lista_personajes)
             if not (self.door_passed == None):
                 self.game_state = self.door_passed
+                return self.game_state
                         
         if(self.screen_info.active):
             self.screen_info.update(lista_eventos,self.lista_personajes[0],self.time_passed)

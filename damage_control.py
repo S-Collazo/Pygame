@@ -54,7 +54,7 @@ class Damage_Control:
         
         for atacante in lista_atacante:
             for atacado in lista_atacado:
-                if (atacado.is_alive):
+                if (atacado.is_alive and atacante.is_alive):
                     if not (atacado.is_dying or atacado.is_hurt) and (atacante.is_attack or atacante.is_shoot) and not (atacado.asset_name == atacante.asset_name): 
                         if((atacante.rect_body_collition.colliderect(atacado.rect_collition))):
                             if(atacado.is_block):

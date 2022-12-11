@@ -82,6 +82,8 @@ class Spawner:
 
                 self.spawned_enemies -= 1
                 self.time_last_spawn = self.time_passed
+        else:
+            self.active = False
                 
     def boss_spawn(self,lista_enemigos:list,ammount:int) -> None:
         """

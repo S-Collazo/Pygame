@@ -38,6 +38,7 @@ class Trap:
         self.is_attack = True
         self.attack_power = 100
         self.attack_sound = "\\sounds\\effects\\trap.wav"
+        self.is_alive = True
         
         self.rect_body_collition = pygame.Rect(self.rect)
     

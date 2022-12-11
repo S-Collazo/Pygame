@@ -45,6 +45,8 @@ class Boss(Enemy):
         
         super().__init__(self.asset, "Bosses", name, x, y, gravity,frame_rate_ms, move_rate_ms, self.sounds, p_scale)
         
+        self.frame_rate_ms = self.frame_rate_ms / 4
+        
         self.tiempo_last_attack_special = 0
         self.interval_time_attack_special = self.interval_time * self.asset["interval_attack_special"]
         
@@ -190,8 +192,8 @@ class Boss(Enemy):
                 self.shoot(lista_balas,False)
 
                 if(abs(self.distance_difference_x) <= (ANCHO_VENTANA - 100)):
-                    if (abs(self.distance_difference_x) <= 300):                 
-                        if((self.tiempo_transcurrido - self.tiempo_last_attack_special) > (self.interval_time_attack_special)):
+                    if (abs(self.distance_difference_x) > 150 and abs(self.distance_difference_x) <= 400):                 
+                        if(spawner.active and (self.tiempo_transcurrido - self.tiempo_last_attack_special) > (self.interval_time_attack_special)):
                             self.attack_special(lista_enemigos,spawner,True)
                             self.tiempo_last_attack_special = self.tiempo_transcurrido
                         else:
@@ -199,7 +201,7 @@ class Boss(Enemy):
                                 self.shoot(lista_balas)
                                 self.tiempo_last_shoot = self.tiempo_transcurrido
                     
-                    elif(abs(self.distance_difference_x) <= 50):
+                    elif(abs(self.distance_difference_x) <= 150):
                         if(oponente.is_attack and (self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
                             self.block()
                             self.tiempo_last_block = self.tiempo_transcurrido
@@ -215,7 +217,7 @@ class Boss(Enemy):
                             super().walk(DIRECTION_R)
             
                     for bala in lista_balas:
-                        if(abs(self.rect.x - bala.rect.x) <= (self.rect.w + 50)):
+                        if(abs(self.rect.x - bala.rect.x) <= (self.rect.w + 50) and not bala.asset_name == self.asset["name"]):
                             if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
                                 self.block()
                                 self.tiempo_last_block = self.tiempo_transcurrido

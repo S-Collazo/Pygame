@@ -8,7 +8,7 @@
             "speed_walk_modifier": 100,
             "jump_height_modifier": 10,
             "interval_jump": 0,
-            "interval_attack": 30,
+            "interval_attack": 40,
             "interval_block": 0,
             "interval_shoot": 0,
             "bullet": {
@@ -74,7 +74,7 @@
             "speed_walk_modifier": 150,
             "jump_height_modifier": 10,
             "interval_jump": 0,
-            "interval_attack": 30,
+            "interval_attack": 40,
             "interval_block": 60,
             "interval_shoot": 0,
             "bullet": {
@@ -216,7 +216,7 @@
             "interval_attack": 20,
             "interval_attack_special": 300,
             "interval_block": 30,
-            "interval_shoot": 100,
+            "interval_shoot": 300,
             "bullet": {
                 "name": "Goblin Club",
                 "path": "\\images\\elements\\goblin_club\\goblin_club",

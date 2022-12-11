@@ -2,8 +2,8 @@
     "background_image": "\\images\\locations\\set_bg_06\\castle_bridge.png",
     "soundtrack": "\\sounds\\soundtrack\\ost_003.mp3",
     "gravity": 10,
-    "frame_rate_ms": 800,
-    "move_rate_ms": 30,
+    "frame_rate_ms": 600,
+    "move_rate_ms": 40,
     "boss_room": 1,
     "player": {
         "player_list": "player_list.json",
