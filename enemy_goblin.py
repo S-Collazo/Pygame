@@ -59,7 +59,7 @@ class Goblin_Standard (Enemy):
         
         super().update(delta_ms, lista_plataformas, lista_items,item_asset)
         if(self.is_alive):
-            self.events(delta_ms, lista_oponente,lista_items,item_asset)
+            self.events(delta_ms,lista_oponente)
 
     def draw(self,screen) -> None:
         """

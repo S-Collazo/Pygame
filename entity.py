@@ -397,7 +397,6 @@ class Entity:
             if not(self.is_on_platform(lista_plataformas)):
                 if(self.move_y == 0):
                     self.is_fall = True
-                    self.move_x = 0
                     self.add_y(self.gravity)          
             else:
                 if(self.is_jump):
@@ -427,7 +426,7 @@ class Entity:
         
         if(self.tiempo_transcurrido_anim >= self.frame_rate_ms):
             self.tiempo_transcurrido_anim = 0
-            
+           
             if(self.frame < len(self.animation) - 1):
                 self.frame += 1
             else:
@@ -435,11 +434,11 @@ class Entity:
                     self.frame = -1
                 else:
                     self.frame = 0
-                if (self.is_dying):
-                    self.is_dying = False
-                    self.is_alive = False
-                elif (self.is_hurt):
-                    self.is_hurt = False
+                    if (self.is_dying):
+                        self.is_dying = False
+                        self.is_alive = False
+                    elif (self.is_hurt):
+                        self.is_hurt = False
                                                       
     def update(self,delta_ms:int,lista_plataformas:list) -> None:
         """

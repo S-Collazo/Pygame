@@ -100,9 +100,9 @@ class Player(Entity):
             if(not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
                 super().stay()
             if(keys[pygame.K_LEFT] and keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
-                super().stay()  
+                super().stay()
             if not (keys[pygame.K_d]):
-                self.block(False)            
+                self.block(False)              
             if(keys[pygame.K_d] and not (keys[pygame.K_s] or keys[pygame.K_a])):
                 if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
                     self.block()
