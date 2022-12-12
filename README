@@ -1,4 +1,5 @@
-<p style="text-align: justified;">
+<div dir = rtl>
+
 # Juego Pygame
 
 El presente repositorio comprende los recursos y el código de un juego creado en el cojunto de módulos *pygame*. El mismo consiste en un juego 2D de plataformas con 
@@ -68,4 +69,5 @@ El tercer nivel cuenta con un jefe y se completa cuando este es eliminado. El je
 
 Una vez completado el tercer nivel, el jugador pasa a la pantalla de puntaciones, donde se calcula su puntuación final. También puede ver una tabla con las puntuaciones 
 más altas y registrar la suya (solo se muestran las cinco más altas).
-</p>
+
+</div>
