@@ -1,5 +1,3 @@
-<div dir = rtl>
-
 # Juego Pygame
 
 El presente repositorio comprende los recursos y el código de un juego creado en el cojunto de módulos *pygame*. El mismo consiste en un juego 2D de plataformas con 
@@ -32,11 +30,15 @@ vez que uno quiera ejecutar el juego.
 ## Controles
 
 *FLECHA IZQUIERDA* - Mover/Apuntar a la izquierda. 
+
 *FLECHA DERECHA* - Mover/Apuntar a la derecha.
+
 *BARRA ESPACIADORA* - Saltar (en la última dirección indicada).
 
 *A* - Atacar.
+
 *S* - Disparar proyectil.
+
 *D* - Bloquear (Puede mantenerse apretado).
 
 *ESCAPE* - Menú de pausa.
@@ -69,5 +71,3 @@ El tercer nivel cuenta con un jefe y se completa cuando este es eliminado. El je
 
 Una vez completado el tercer nivel, el jugador pasa a la pantalla de puntaciones, donde se calcula su puntuación final. También puede ver una tabla con las puntuaciones 
 más altas y registrar la suya (solo se muestran las cinco más altas).
-
-</div>
