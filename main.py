@@ -63,16 +63,15 @@ while True:
             
         highscore = Highscore(screen,sounds)
                 
-        while not (game_state == GAME_MENU or game_state == GAME_RESTART or game_state == GAME_CONTINUE):
-            start.start_main.active = True
-            pause_menu.pause_main.active = True
-            win.win_main.active = True
-            death.death_main.active = True
-            
+        while not (game_state == GAME_MENU or game_state == GAME_RESTART or game_state == GAME_CONTINUE):    
             while (game_state == GAME_PAUSE):
                 lista_eventos = pygame.event.get()
                 keys = pygame.key.get_pressed()                
                 delta_ms = clock.tick(FPS)
+                
+                start.start_main.active = True
+                win.win_main.active = True
+                death.death_main.active = True
                             
                 game_state = pause_menu.pause_level(delta_ms,lista_eventos)
                 
@@ -83,6 +82,11 @@ while True:
                 keys = pygame.key.get_pressed()                
                 delta_ms = clock.tick(FPS)
                 
+                start.start_main.active = True
+                pause_menu.pause_main.active = True
+                win.win_main.active = True
+                death.death_main.active = True
+                
                 game_state = level.run_level(delta_ms,lista_eventos,keys)
                     
                 pygame.display.flip()
@@ -92,6 +96,10 @@ while True:
                 keys = pygame.key.get_pressed()                
                 delta_ms = clock.tick(FPS)
                 
+                start.start_main.active = True
+                pause_menu.pause_main.active = True
+                win.win_main.active = True
+                
                 game_state = death.death_screen(delta_ms,lista_eventos)
                 
                 pygame.display.flip()
@@ -100,6 +108,10 @@ while True:
                 lista_eventos = pygame.event.get()
                 keys = pygame.key.get_pressed()                
                 delta_ms = clock.tick(FPS)
+                
+                start.start_main.active = True
+                pause_menu.pause_main.active = True
+                death.death_main.active = True
                 
                 game_state = win.win_screen(delta_ms,lista_eventos,level.lista_personajes[0],level.time_final)
                 
@@ -111,6 +123,11 @@ while True:
                 lista_eventos = pygame.event.get()
                 keys = pygame.key.get_pressed()                
                 delta_ms = clock.tick(FPS)
+                
+                start.start_main.active = True
+                pause_menu.pause_main.active = True
+                win.win_main.active = True
+                death.death_main.active = True
                 
                 game_state = highscore.highscore_screen(delta_ms,lista_eventos,score_list)
                                 

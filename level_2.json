@@ -19,9 +19,9 @@
         "enemy_list": "enemy_list.json",
         "enemy_spawner": 1,
         "interval_time_spawn": [
-            1,
+            5,
             3,
-            5
+            3
         ],
         "enemy_quantity": [
             10,

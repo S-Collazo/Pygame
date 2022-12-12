@@ -5,7 +5,7 @@ from auxiliar import Auxiliar
 class Bullet:
     """Proyectiles disparados por los personajes del juego."""
     
-    def __init__ (self,asset:dict,x:int,y:int,move_rate_ms:int,frame_rate_ms:int,move:int=100,direction_inicial:int=DIRECTION_R,p_scale:float=1,interval_bullet:int=FPS*2,distance:int=ANCHO_VENTANA) -> None:
+    def __init__ (self,asset:dict,x:int,y:int,move_rate_ms:int,frame_rate_ms:int,move:int=100,direction_inicial:int=DIRECTION_R,p_scale:float=1,interval_bullet:int=FPS,distance:int=ANCHO_VENTANA) -> None:
         """
         Extrae información del diccionario para determinar nombre del personaje que dispara, nombre de la bala, sprite a animar, 
         puntos de ataque y sonido de impacto. Usa los parámetros pasados para determinar distancia y velocidad de movimiento.
@@ -32,7 +32,7 @@ class Bullet:
         p_scale : float
             escala del sprite. Por defecto, 1
         interval_bullet : int
-            intervalo de tiempo para actualizar la posición de la bala. Por defecto, el doble de los FPS del nivel
+            intervalo de tiempo para actualizar la posición de la bala. Por defecto, los FPS del nivel
         distance : int
             distancia máxima que puede recorrer la bala antes de desaparecer. Por defecto, el ancho de la ventana
         """
@@ -70,7 +70,7 @@ class Bullet:
         
         self.delta_x = move
         self.frame_rate_ms = frame_rate_ms
-        self.move_rate_ms = move_rate_ms * FPS
+        self.move_rate_ms = move_rate_ms * 1.5
                
         self.distance = distance
         self.tiempo_transcurrido_move = 0
@@ -101,7 +101,7 @@ class Bullet:
         
         if(self.is_shoot):  
             for entidad in self.lista_entidades:
-                if not(self.asset_name == entidad.asset_name or (entidad.is_dying and entidad.frame > 0)):
+                if not((self.asset_name == entidad.asset_name) or (entidad.is_dying)):
                     if(self.rect_body_collition.colliderect(entidad.rect_collition)):
                         self.is_shoot = False
                         break
