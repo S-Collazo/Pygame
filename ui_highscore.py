@@ -8,7 +8,21 @@ from ui_highscore_register import HighscoreRegister
 from sounds import Sounds
 
 class Highscore:
-    def __init__ (self,screen,sounds):
+    """Pantalla de puntuaciones del juego."""
+    
+    def __init__ (self,screen,sounds) -> None:
+        """
+        Crea los formularios de la pantalla de puntuaciones.
+              
+        No retorna nada.
+              
+        ----------
+        screen
+            superficie en la que se renderizan los formularios
+        sounds
+            objeto controlador de sonidos
+        """
+        
         self.screen = screen
         
         self.background_image = pygame.image.load(PATH_RECURSOS + "\\images\\background_end.png")
@@ -25,7 +39,30 @@ class Highscore:
         self.score = 0
         self.exit = False
         
-    def highscore_screen (self,delta_ms,lista_eventos,score_list):
+    def highscore_screen (self,delta_ms:int,lista_eventos:list,score_list:list) -> int:
+        """
+        Controla el estado de los formularios de la pantalla de puntuaciones. Si están activos, los
+        actualiza y renderiza.
+        
+        Si es la primera vez que se ejecuta, silencia todos los efectos de sonidos previos, 
+        y reproduce el efecto de sonido asignado.
+        
+        Si el formulario principal está activo, extrae de este la variable de puntuación final.
+        
+        Si no queda ningún formulario activo y el último formulario devolvió la variable de salida como True, 
+        regresa el juego al menú principal.
+        
+        Retorna el estado de juego.
+        
+        ----------
+        delta_ms : int
+            valor de tiempo
+        lista_eventos : list
+            lista de distintos tipos de eventos registrados por Pygame
+        score_list : list
+            puntuación del jugador en cada nivel
+        """
+        
         self.game_state = GAME_END
          
         if(self.sound_flag):    
