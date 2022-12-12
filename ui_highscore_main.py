@@ -83,7 +83,7 @@ class HighscoreMain(Form):
         
         self.set_active(parametro)
         
-    def on_click_button_exit (self, parametro):
+    def on_click_button_exit (self, parametro:str) -> None:
         """
         Desactiva el formulario de pantalla de puntuación 
         y regresa el juego al menú principal.
