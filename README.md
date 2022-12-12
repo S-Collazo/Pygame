@@ -12,7 +12,6 @@ Los requisitos para correr el juego son los siguientes:
  - Python 3.9.12 o superior ([link de descarga](https://www.python.org/downloads/)).
  - Anaconda 4.14.0 ([link de descarga](https://www.anaconda.com/)).
  - Pygame (instalado por defecto con Python).
- - Visual Studio Code y extensión Python for Visual Studio Code o equivalente ([link de descarga](https://code.visualstudio.com/)).
  
 De ser necesario, pygame puede instalarse usando el siguiente comando:
 
@@ -24,8 +23,13 @@ Una vez cumplidos los requisitos, descargar el repositorio y extraerlo en una ca
 
 ## Ejecución
 
-En la carpeta en la que se extrajo el repositorio, abrir "main.py" y correrlo con Visual Studio Code (o programa equivalente). Este proceso deberá repetirse cada 
-vez que uno quiera ejecutar el juego.
+En la carpeta en la que se extrajo el repositorio, abrir la terminal e ingresar:
+
+```bash
+python main.py
+```
+
+Este proceso deberá repetirse cada vez que uno quiera ejecutar el juego.
 
 ## Controles
 
