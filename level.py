@@ -90,7 +90,10 @@ class Level:
                 self.spawner.active = False
         else:
             for n in range(enemy_info["enemy_quantity"][self.difficulty]):
-                enemy_type_value = random.randrange(enemy_info["enemy_type_number"][self.difficulty])
+                if (enemy_info["enemy_type_number"][self.difficulty] > 1):
+                    enemy_type_value = random.randrange(enemy_info["enemy_type_number"][self.difficulty])
+                else:
+                    enemy_type_value = 0
                 enemy_coordinates_value = random.randrange(len(enemy_info["enemy_starter_position"]))
                 enemy_type = Auxiliar.splitIntoString(enemy_info["enemy_type"][self.difficulty],"/")
                 enemy_coordinates = Auxiliar.splitIntoInt(enemy_info["enemy_starter_position"][enemy_coordinates_value],",")
