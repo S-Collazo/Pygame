@@ -14,8 +14,8 @@ class StartOptions(Form):
         self.sounds = sounds
         self.mute_state = False
         
-        self.button_sounds_mute_on = Button(master_surface=self,x=self.menu_x,y=100,w=25,h=25,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Buttons/Button_S_08.png",on_click=self.on_click_button_sounds_mute,on_click_param=True,text="ON",font="Verdana",font_size=10,font_color=BLACK)
-        self.button_sounds_mute_off = Button(master_surface=self,x=self.menu_x + 55,y=100,w=25,h=25,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Buttons/Button_S_06.png",on_click=self.on_click_button_sounds_mute,on_click_param=False,text="OFF",font="Verdana",font_size=10,font_color=BLACK)
+        self.button_sounds_mute_on = Button(master_surface=self,x=self.menu_x,y=100,w=25,h=25,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Buttons/Button_S_08.png",on_click=self.on_click_button_sounds_mute,on_click_param=True,text="SI",font="Verdana",font_size=10,font_color=BLACK)
+        self.button_sounds_mute_off = Button(master_surface=self,x=self.menu_x + 55,y=100,w=25,h=25,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Buttons/Button_S_06.png",on_click=self.on_click_button_sounds_mute,on_click_param=False,text="NO",font="Verdana",font_size=10,font_color=BLACK)
         
         self.button_sound_low = Button(master_surface=self,x=self.menu_x,y=160,w=25,h=25,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Buttons/Button_S_05.png",on_click=self.on_click_button_sound_volume,on_click_param=0.25,text="Bajo",font="Verdana",font_size=10,font_color=BLACK)
         self.button_sound_mid = Button(master_surface=self,x=self.menu_x + 55,y=160,w=25,h=25,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Buttons/Button_S_08.png",on_click=self.on_click_button_sound_volume,on_click_param=0.50,text="Medio",font="Verdana",font_size=10,font_color=BLACK)
