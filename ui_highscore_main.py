@@ -7,13 +7,13 @@ from ui_button import Button
 from ui_textbox import TextBox
 
 class HighscoreMain(Form):
-    """Formulario principal de la pantalla de muerte."""
+    """Formulario principal de la pantalla de puntuación."""
     
     def __init__(self,name:str,master_surface,x:int,y:int,w:int,h:int,background_color;tuple,border_color:tuple,active:bool) -> None:
         """
         Crea el formulario en base a los parámetros recibidos.
         
-        También crea dos botones (uno para registrar una puntuación nueva y 
+        También crea dos botones (uno para ir a la tabla de puntuaciones y 
         otro para regresar al menú principal) y cinco cuadros de texto (el título 
         del formulario, las puntuaciones de cada uno de los tres niveles y la 
         puntuación final).
