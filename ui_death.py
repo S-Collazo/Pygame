@@ -16,7 +16,7 @@ class Death:
               
         ----------
         screen
-            superficie en la que se renderizan los sprites
+            superficie en la que se renderizan los formularios
         sounds
             objeto controlador de sonidos
         """
@@ -38,12 +38,14 @@ class Death:
         Si es la primera vez que se ejecuta, silencia todos los efectos de sonidos previos, 
         y reproduce el efecto de sonido asignado.
         
-        Si no queda ningún formulario activo, cambia el estado de juego en base a las variables 
-        activas y lo retorna.
+        Si no quedan formularios activos y el último formulario devolvió la variable de salida como True, 
+        regresa el juego al menú principal. De otra forma, reinicia el último nivel activo.
+        
+        Retorna el estado de juego.
         
         ----------
         screen
-            superficie en la que se renderizan los sprites
+            superficie en la que se renderizan los formularios
         sounds
             objeto controlador de sonidos
         """
