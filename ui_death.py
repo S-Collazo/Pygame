@@ -6,7 +6,21 @@ from ui_death_main import DeathMain
 from sounds import Sounds
 
 class Death:
-    def __init__ (self,screen,sounds):
+    """Pantalla de muerte del jugador."""
+    
+    def __init__ (self,screen,sounds) -> None:
+        """
+        Crea los formularios de la pantalla de muerte.
+              
+        No retorna nada.
+              
+        ----------
+        screen
+            superficie en la que se renderizan los sprites
+        sounds
+            objeto controlador de sonidos
+        """
+        
         self.screen = screen
         self.death_main = DeathMain(name="death_main",master_surface = screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=BLACK,border_color=None,active=True)
         
@@ -16,7 +30,24 @@ class Death:
         
         self.exit = False
         
-    def death_screen (self,delta_ms,lista_eventos):
+    def death_screen (self,delta_ms:int,lista_eventos:list) -> int:
+        """
+        Controla el estado de los formularios de la pantalla de muerte. Si están activos, los
+        actualiza y renderiza.
+        
+        Si es la primera vez que se ejecuta, silencia todos los efectos de sonidos previos, 
+        y reproduce el efecto de sonido asignado.
+        
+        Si no queda ningún formulario activo, cambia el estado de juego en base a las variables 
+        activas y lo retorna.
+        
+        ----------
+        screen
+            superficie en la que se renderizan los sprites
+        sounds
+            objeto controlador de sonidos
+        """
+        
         self.game_state = GAME_DEATH
         
         if(self.sound_flag):    

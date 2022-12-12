@@ -58,9 +58,12 @@ class Bullet:
         
         self.attack_power = self.bullet_asset["attack_power"]
         self.attack_sound = self.bullet_asset["sound_effect"]
-        self.is_alive = True
         self.is_shoot = True
         self.is_attack = False
+        
+        self.is_alive = True
+        self.is_dying = False
+        self.is_hurt = False
         
         self.collition_enabled = True
         self.rect_body_collition = pygame.Rect(self.rect)

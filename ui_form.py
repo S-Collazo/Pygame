@@ -6,8 +6,38 @@ from ui_widget import Widget
 from ui_button import Button
 
 class Form ():
+    """Formulario base de todos los menues del juego."""
+    
     forms_dict = {}
-    def __init__ (self,name,master_surface,x,y,w,h,background_color,border_color,active):
+    def __init__ (self,name:str,master_surface,x:int,y:int,w:int,h:int,background_color:tuple,border_color:tuple,active:bool) -> None:
+        """
+        Crea el formulario en base a los parámetros recibidos.
+        
+        También crea un rectángulo de superficie del mismo tamaño que el formulario.
+        
+        No retorna nada.
+        
+        ----------
+        name : str
+            nombre identificador del formulario
+        master_surface
+            superficie en la que se renderiza el formulario
+        x : int
+            coordenada X en la que se genera el formulario
+        y : int
+            coordenada Y en la que se genera el formulario
+        w : int
+            ancho del formulario
+        h : int
+            alto del formulario
+        background_color : tuple
+            color de fondo del formulario
+        border_color : tuple
+            color de borde del formulario
+        active : bool
+            indica si el formulario se encuentra activo o no
+        """
+        
         self.forms_dict[name] = self
         self.master_form = master_surface
         self.x = x
@@ -32,37 +62,50 @@ class Form ():
             self.surface = self.surface.convert_alpha()
             self.surface.fill((0, 0, 0, 0))
             
-    def set_active(self,name):
+    def set_active(self,name:str) -> None:
+        """
+        Desactiva el formulario que ejecuta el método y activa 
+        el formulario indicado en el parámetro (si se recibió uno).
+        
+        No retorna nada.
+
+        ----------
+        name : str
+            nombre del formulario a activar (opcional)
+        """
+        
         for aux_form in self.forms_dict.values():
             aux_form.active = False
         if (name != None):
             self.forms_dict[name].active = True
 
-    def render(self):
+    def render(self) -> None:
+        """
+        Pasa el método render del formulario creado en base a esta clase.
+        
+        No retorna nada.
+        """
+        
         pass
 
-    def update(self,lista_eventos):
+    def update(self,lista_eventos:list) -> None:
+        """
+        Pasa el método update del formulario creado en base a esta clase.
+        
+        No retorna nada.
+        
+        ----------
+        lista_eventos : list
+            lista de distintos tipos de eventos registrados por Pygame
+        """
+        
         pass
 
-    def draw(self):
+    def draw(self) -> None:
+        """
+        Renderiza el formulario y su rectángulo de superficie.
+        
+        No retorna nada.
+        """
+        
         self.master_form.blit(self.surface,self.slave_rect)
-    
-class FormMenu(Form):
-    def __init__ (self,master_surface,x,y,w,h,background_color,border_color,active):
-        super().__init__(master_surface,x,y,w,h,background_color,border_color,active)
-        
-        self.boton1 = Button(master=self,x=100,y=50,w=200,h=50,background_color=(255,0,0),border_color=(255,0,255),on_click=self.on_click_boton1,on_click_param="1234",text="MENU",font="Verdana",font_size=30,font_color=(0,255,0))
-        self.boton2 = Button(master=self,x=200,y=50,w=200,h=50,background_color=(255,0,0),border_color=(255,0,255),on_click=self.on_click_boton1,on_click_param="8",text="MENU 2",font="Verdana",font_size=30,font_color=(0,255,0))
-        self.lista_widget = [self.boton1,self.boton2]
-     
-    def on_click_boton1(self, parametro):
-        print("CLICK",parametro)
-        
-    def update(self,lista_eventos):
-        for aux_boton in self.lista_widget:
-            aux_boton.update(lista_eventos)
-        
-    def draw (self):
-        super().draw()
-        for aux_boton in self.lista_widget:
-            aux_boton.draw()

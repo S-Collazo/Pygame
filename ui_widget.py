@@ -3,7 +3,43 @@ from pygame.locals import *
 from constants import *
 
 class Widget:
-    def __init__ (self,master_surface,x,y,w,h,background_color,border_color,background_image,text,font,font_size,font_color,bold=False):
+    """Elemento base de la IU."""
+    
+    def __init__ (self,master_surface,x:int,y:int,w:int,h:int,background_color:tuple,border_color:tuple,background_image:str,text:str,font:str,font_size:int,font_color:tuple,bold:bool=False) -> None:
+        """
+        Establece las características del widget en base a los parámetros recibidos.
+        
+        No retorna nada.
+              
+        ----------
+        master_surface
+            superficie en la que se renderizan el widget
+        x : int
+            coordenada X en la que se genera el widget en la superficie
+        y : int
+            coordenada Y en la que se genera el widget en la superficie
+        w : int
+            ancho del widget
+        h : int
+            alto del widget
+        background_color : tuple
+            color de fondo del widget
+        border_color : tuple
+            color de borde del widget
+        background_image : str
+            imagen de fondo del widget (opcional)
+        text : str
+            texto a renderizar en el widget (opcional)
+        font : str
+            tipo de fuente del texto
+        font_size : int
+            tamaño de fuente del texto
+        font_color : tuple
+            color de fuente del texto
+        bold : bool
+            indica si el texto es en negrita. Por defecto, False
+        """
+        
         self.master_form = master_surface
         self.x = x
         self.y = y
@@ -26,7 +62,13 @@ class Widget:
             self._font_sys = pygame.font.SysFont(font,font_size,bold)
             self._font_color = font_color
     
-    def render (self):
+    def render (self) -> None:
+        """
+        Crea el widget. También crea un rectángulo de colisión del mismo tamaño.
+        
+        No retorna nada.
+        """
+        
         self.slave_surface = pygame.Surface((self.w,self.h), pygame.SRCALPHA)
         self.slave_rect = self.slave_surface.get_rect()
         self.slave_rect.x = self.x
@@ -51,8 +93,19 @@ class Widget:
         if self.border_color:
             pygame.draw.rect(self.slave_surface, self.border_color, self.slave_surface.get_rect(), 2)
             
-    def update (self):
+    def update (self) -> None:
+        """
+        Pasa el método update del elemento creado en base a esta clase.
+        
+        No retorna nada.
+        """
         pass
     
-    def draw (self):
+    def draw (self) -> None:
+        """
+        Renderiza el widget y su rectángulo de colisión.
+        
+        No retorna nada.
+        """
+        
         self.master_form.surface.blit(self.slave_surface,self.slave_rect)

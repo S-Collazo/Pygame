@@ -7,7 +7,37 @@ from ui_button import Button
 from ui_textbox import TextBox
 
 class DeathMain(Form):
-    def __init__(self,name,master_surface,x,y,w,h,background_color,border_color,active):
+    """Formulario principal de la pantalla de muerte."""
+    def __init__(self,name:str,master_surface,x:int,y:int,w:int,h:int,background_color:tuple,border_color:tuple,active:bool) -> None:
+        """
+        Crea el formulario en base a los parámetros recibidos.
+        
+        También crea dos botones (uno para reiniciar el nivel y otro para regresar 
+        al menú principal) y un cuadro de texto con el título del formulario.
+        
+        No retorna nada.
+        
+        ----------
+        name : str
+            nombre identificador del formulario
+        master_surface
+            superficie en la que se renderiza el formulario
+        x : int
+            coordenada X en la que se genera el formulario
+        y : int
+            coordenada Y en la que se genera el formulario
+        w : int
+            ancho del formulario
+        h : int
+            alto del formulario
+        background_color : tuple
+            color de fondo del formulario
+        border_color : tuple
+            color de borde del formulario
+        active : bool
+            indica si el formulario se encuentra activo o no
+        """
+        
         super().__init__(name,master_surface,x,y,w,h,background_color,border_color,active)
         self.menu_x = self.w / 3
         
@@ -21,19 +51,58 @@ class DeathMain(Form):
         self.game_state = GAME_DEATH
         self.exit = False
 
-    def on_click_button_restart(self,parametro) -> bool:
+    def on_click_button_restart(self,parametro:str) -> None:
+        """
+        Desactiva el formulario de pantalla de la muerte y 
+        regresa el juego al nivel activo.
+        
+        No retorna nada.
+        
+        ----------
+        parametro : str
+            elementos de información de usuario del nivel a reactivar
+        """
+        
         self.set_active(parametro)
         self.exit = False
     
-    def on_click_button_exit (self, parametro):
+    def on_click_button_exit (self, parametro) -> None:
+        """
+        Desactiva el formulario de pantalla de la muerte y 
+        regresa el juego al menú principal.
+        
+        No retorna nada.
+        
+        ----------
+        parametro : str
+            indicador vacío
+        """
+        
         self.set_active(parametro)
         self.exit = True
 
     def update(self, lista_eventos):
+        """
+        Actualiza los elementos del formulario.
+        
+        No retorna nada.
+        
+        ----------
+        lista_eventos : list
+            lista de distintos tipos de eventos registrados por Pygame
+        """
+        
         for aux_widget in self.lista_widget:
             aux_widget.update(lista_eventos)
 
-    def draw(self): 
+    def draw(self) -> None: 
+        """
+        Ejecuta el método heredado de renderización y 
+        hace lo mismo con los elementos del formulario.
+        
+        No retorna nada.
+        """
+        
         super().draw()
         for aux_widget in self.lista_widget:    
             aux_widget.draw()

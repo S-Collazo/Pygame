@@ -38,13 +38,16 @@ class Trap:
         self.is_attack = True
         self.attack_power = 100
         self.attack_sound = "\\sounds\\effects\\trap.wav"
-        self.is_alive = True
         
-        self.rect_body_collition = pygame.Rect(self.rect)
+        self.is_alive = True
+        self.is_dying = False
+        self.is_hurt = False
+        
+        self.rect_body_collition = pygame.Rect(self.rect.x,self.rect.y,self.rect.width,self.rect.height / 2)
     
     def draw (self,screen):       
         """
-        Renderiza el sprite de la plataforma.
+        Renderiza el sprite de la trampa.
         
         No retorna nada.
         
