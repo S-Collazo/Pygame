@@ -7,7 +7,43 @@ from ui_textbox import TextBox
 from database import Database
 
 class HighscoreTable(Form):
-    def __init__(self,name,master_surface,x,y,w,h,background_color,border_color,active):
+    """Formulario de la tabla de puntuaciones."""
+    
+    def __init__(self,name:str,master_surface,x:int,y:int,w:int,h:int,background_color:tuple,border_color:tuple,active:bool) -> None:
+        """
+        Crea el formulario en base a los parámetros recibidos.
+        
+        Extrae información de un objeto Base de datos para obtener las puntuaciones 
+        y nombres de jugadores registrados.
+        
+        También crea dos botones (uno para registrar una puntuación nueva y 
+        otro para regresar al menú principal), un cuadro de texto principal con
+        el título del formulario y cinco pares de cuadros de texto con los nombres 
+        y puntuaciones obtenidas.
+        
+        No retorna nada.
+        
+        ----------
+        name : str
+            nombre identificador del formulario
+        master_surface
+            superficie en la que se renderiza el formulario
+        x : int
+            coordenada X en la que se genera el formulario
+        y : int
+            coordenada Y en la que se genera el formulario
+        w : int
+            ancho del formulario
+        h : int
+            alto del formulario
+        background_color : tuple
+            color de fondo del formulario
+        border_color : tuple
+            color de borde del formulario
+        active : bool
+            indica si el formulario se encuentra activo o no
+        """
+        
         super().__init__(name,master_surface,x,y,w,h,background_color,border_color,active)
         self.menu_x = self.w / 4
 
@@ -36,14 +72,49 @@ class HighscoreTable(Form):
         self.game_state = GAME_END
         self.exit = False
     
-    def on_click_button_register_score (self,parametro):
+    def on_click_button_register_score (self,parametro:str) -> None:
+        """
+        Desactiva el formulario de tabla de puntuaciones y 
+        activa el formulario de registro de puntuación.
+        
+        No retorna nada.
+        
+        ----------
+        parametro : str
+            nombre del formulario a activar
+        """
+        
         self.set_active(parametro)
                 
-    def on_click_button_exit (self, parametro):
+    def on_click_button_exit (self, parametro:str) -> None:
+        """
+        Desactiva el formulario de tabla de puntuaciones 
+        y regresa el juego al menú principal.
+        
+        No retorna nada.
+        
+        ----------
+        parametro : str
+            indicador vacío
+        """
+        
         self.set_active(parametro)
         self.exit = True
 
-    def update(self, lista_eventos):
+    def update(self, lista_eventos:list) -> None:
+        """
+        Carga nuevamente los nombres y puntuaciones registrados en la base de datos (en 
+        caso de que haya una nueva puntuación en una de las entradas, se actualiza).
+        
+        Actualiza los elementos del formulario.
+        
+        No retorna nada.
+        
+        ----------
+        lista_eventos : list
+            lista de distintos tipos de eventos registrados por Pygame
+        """
+        
         self.highscore_list = Database.display_all_highscore()
         self.highscore_name_1._text = self.highscore_list[0][1]
         self.highscore_score_1._text = str(self.highscore_list[0][2])
@@ -59,7 +130,14 @@ class HighscoreTable(Form):
         for aux_widget in self.lista_widget:
             aux_widget.update(lista_eventos)
 
-    def draw(self):
+    def draw(self) -> None: 
+        """
+        Ejecuta el método heredado de renderización y 
+        hace lo mismo con los elementos del formulario.
+        
+        No retorna nada.
+        """   
+          
         super().draw()
         for aux_widget in self.lista_widget:    
             aux_widget.draw()
