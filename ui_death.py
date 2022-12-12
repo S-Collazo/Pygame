@@ -69,9 +69,7 @@ class Death:
         else:
             if (self.exit):
                 self.game_state = GAME_MENU
-                return self.game_state
             else:
                 self.game_state = GAME_RESTART
-                return self.game_state
                     
         return self.game_state

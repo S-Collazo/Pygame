@@ -38,12 +38,9 @@ class Win:
         else:
             if (self.exit):
                 self.game_state = GAME_MENU
-                return self.game_state
-            if (self.next):
+            elif (self.next):
                 self.game_state = GAME_CONTINUE
-                return self.game_state
             else:
                 self.game_state = GAME_RESTART
-                return self.game_state
                     
         return self.game_state

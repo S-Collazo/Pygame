@@ -93,6 +93,5 @@ class Highscore:
         else:
             if (self.exit):
                 self.game_state = GAME_MENU
-                return self.game_state
                     
         return self.game_state

@@ -9,7 +9,7 @@ from ui_textbox import TextBox
 class HighscoreMain(Form):
     """Formulario principal de la pantalla de puntuación."""
     
-    def __init__(self,name:str,master_surface,x:int,y:int,w:int,h:int,background_color;tuple,border_color:tuple,active:bool) -> None:
+    def __init__(self,name:str,master_surface,x:int,y:int,w:int,h:int,background_color:tuple,border_color:tuple,active:bool) -> None:
         """
         Crea el formulario en base a los parámetros recibidos.
         

@@ -37,10 +37,10 @@ class HitpointBar(Widget):
         self.render(entity)
         
     def render(self,entity):
-        if(entity.hitpoints > 0):
-            self.value = entity.hitpoints
-        else:
+        if (entity.is_dying):
             self.value = 0
+        else:
+            self.value = entity.hitpoints
         super().render()
         for x in range(self.value):
             self.slave_surface.blit(self.surface_element, (x*self.w/self.value_max, 0))
