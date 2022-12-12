@@ -101,7 +101,7 @@ class Bullet:
         
         if(self.is_shoot):  
             for entidad in self.lista_entidades:
-                if not(self.asset_name == entidad.asset_name or entidad.is_dying):
+                if not(self.asset_name == entidad.asset_name or (entidad.is_dying and entidad.frame > 0)):
                     if(self.rect_body_collition.colliderect(entidad.rect_collition)):
                         self.is_shoot = False
                         break
