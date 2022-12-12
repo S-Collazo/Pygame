@@ -27,6 +27,8 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
+music_flag = True
+
 while True:
     sounds = Sounds()
     start = Start(screen,sounds)
@@ -62,6 +64,10 @@ while True:
             game_state = GAME_END
             
         highscore = Highscore(screen,sounds)
+        
+        if(music_flag):
+            sounds.music_pause(start.start_options.mute_state)
+            music_flag = False
                 
         while not (game_state == GAME_MENU or game_state == GAME_RESTART or game_state == GAME_CONTINUE):    
             while (game_state == GAME_PAUSE):
@@ -86,9 +92,9 @@ while True:
                 pause_menu.pause_main.active = True
                 win.win_main.active = True
                 death.death_main.active = True
-                
+                           
                 game_state = level.run_level(delta_ms,lista_eventos,keys)
-                    
+                              
                 pygame.display.flip()
                 
             while (game_state == GAME_DEATH):
