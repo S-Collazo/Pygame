@@ -72,4 +72,4 @@ El tercer nivel cuenta con un jefe y se completa cuando este es eliminado. El je
 Una vez completado el tercer nivel, el jugador pasa a la pantalla de puntaciones, donde se calcula su puntuación final. También puede ver una tabla con las puntuaciones 
 más altas y registrar la suya (solo se muestran las cinco más altas).
 
- [**Video de demostración**](https://youtu.be/RBihVMoa5IM)
+   [**Video de demostración**](https://youtu.be/RBihVMoa5IM)
